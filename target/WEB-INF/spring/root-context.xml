@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-	<!-- <context:component-scan base-package="org.zerock.myapp.domain" /> -->
+	<!-- <context:component-scan base-package="org.zerock.seoulive.domain" /> -->
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
@@ -44,15 +44,15 @@
 <!--		&lt;!&ndash; <property name="mapperLocations" value="classpath:mappers/*.xml"/> &ndash;&gt;-->
 <!--	</bean>-->
 
-	<mybatis-spring:scan base-package="org.zerock.myapp.controller" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
 	
 	<!-- ================= Start Of AOP ================== -->
 	
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="org.zerock.myapp.service" />
-	<context:component-scan base-package="org.zerock.myapp.persistence" />
+	<context:component-scan base-package="org.zerock.seoulive.service" />
+	<context:component-scan base-package="org.zerock.seoulive.persistence" />
 
 	<!-- ================= End Of AOP ================== -->
 	
