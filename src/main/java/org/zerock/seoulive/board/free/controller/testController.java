@@ -9,6 +9,6 @@ public class testController {
     @RequestMapping("/")
     public String test1() {
         return "board/boardtest";
-//        test1
+//        test1 패키징작업
     }
 }
