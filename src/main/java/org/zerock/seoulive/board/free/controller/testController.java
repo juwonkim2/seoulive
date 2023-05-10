@@ -8,7 +8,7 @@ public class testController {
 
     @RequestMapping("/")
     public String test1() {
-        return "board/boardtest";
+        return "board/test";
 //        test1 패키징작업
     }
 }
