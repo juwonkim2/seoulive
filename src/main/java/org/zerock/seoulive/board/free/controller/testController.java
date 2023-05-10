@@ -9,5 +9,6 @@ public class testController {
     @RequestMapping("/")
     public String test1() {
         return "board/boardtest";
+//        test
     }
 }
