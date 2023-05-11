@@ -13,4 +13,12 @@ public class FreeBoardController {
     public String list() {
         return "board/free/list";
     }
+    @RequestMapping("/write")
+    public String write() {
+        return "board/free/write";
+    }
+    @RequestMapping("/view")
+    public String view() {
+        return "board/free/view";
+    }
 }

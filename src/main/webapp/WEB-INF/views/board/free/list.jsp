@@ -9,7 +9,7 @@
     <!-- 커밋하고 푸쉬하기1212 -->
     <title>SEOULLIVE</title>
     <!-- layout css -->
-    <link rel="stylesheet" href="../../../../resources/static/css/free/list.css">
+    <link rel="stylesheet" href="../../../../resources/static/css/free/list&write.css">
     <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
 
 
