@@ -1,9 +1,7 @@
 package org.zerock.seoulive.board.course.controller;
 
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.exception.ControllerException;
+import org.zerock.seoulive.board.course.service.CourseService;
+
+import java.util.List;
 
 @Log4j2
 @NoArgsConstructor
@@ -20,13 +22,18 @@ import org.zerock.seoulive.board.course.exception.ControllerException;
 @Controller
 public class CourseController {
 
+    private CourseService service;
+
     // 1. 게시판 목록 조회
     @GetMapping("/list")
-    void list() throws ControllerException {
+    void list(Model model) throws ControllerException {
         log.trace("list() invoked.");
 
         try {
+            List<CourseVO> list = this.service.getList();
 
+            // Request Scope 공유속성 생성
+            model.addAttribute("__LIST__", list);
         } catch(Exception e) {
             throw new ControllerException(e);
         } // try-catch

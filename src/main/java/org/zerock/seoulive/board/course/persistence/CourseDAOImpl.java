@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.exception.DAOException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -25,23 +26,21 @@ public class CourseDAOImpl implements CourseDAO, InitializingBean {
     public List<CourseVO> list() throws DAOException {
         log.trace("list() invoked.");
 
+        List<CourseVO> list = new ArrayList<CourseVO>();
 
         SqlSession sqlSession = this.sqlSessionFactory.openSession();
 
         try(sqlSession) {
 
-            String namespace = "org.zerock.myapp.persistence.UserDAO";
-            String sqlId = "selectUser";
+            String namespace = "org.zerock.seoulive.board.course.persistence.CourseDAO";
+            String sqlId = "list";
             String sql = namespace+"."+sqlId;
 
-            return sqlSession.selectOne(sql, dto);
+            return sqlSession.selectOne(sql);
         } catch(Exception e) {
             throw new DAOException(e);
         } // try-with-resources
-
-
-        return null;
-    }
+    } // end list
 
     @Override
     public void write() {
