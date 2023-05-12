@@ -1,4 +1,4 @@
-package org.zerock.myapp.exception;
+package org.zerock.seoulive.board.course.exception;
 
 
 // 개발자가 만드는 컨트롤러의 핸들러 메소드에서 오류발생시, 

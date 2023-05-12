@@ -1,4 +1,4 @@
-package org.zerock.myapp.exception;
+package org.zerock.seoulive.board.course.exception;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
