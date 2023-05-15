@@ -1,6 +1,7 @@
 package org.zerock.seoulive.board.course.service;
 
 import org.springframework.stereotype.Service;
+import org.zerock.seoulive.board.course.domain.courseDTO;
 import org.zerock.seoulive.board.course.domain.courseVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
 
@@ -15,8 +16,8 @@ public interface courseViewService {
     //댓글 삭제
     //댓글 개수 반환
 
-    public abstract courseVO get(int seq) throws ServiceException; //여행지 가져오기
-    public abstract boolean modify(courseVO course) throws ServiceException;
-    public abstract boolean remove(int seq) throws ServiceException;
+    public abstract courseVO get(Integer seq) throws ServiceException; //여행지 가져오기
+    public abstract boolean modify(courseDTO course) throws ServiceException;
+    public abstract boolean remove(Integer seq) throws ServiceException;
     public abstract List<courseVO> getList() throws ServiceException;
 } //end interface

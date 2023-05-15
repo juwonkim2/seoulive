@@ -12,16 +12,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.seoulive.board.course.domain.courseDTO;
 import org.zerock.seoulive.board.course.domain.courseVO;
 import org.zerock.seoulive.board.course.exception.ControllerException;
 import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.course.service.courseViewService;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Log4j2
-@AllArgsConstructor
+@NoArgsConstructor
 
 @Controller
 @RequestMapping("/board/course")
@@ -32,40 +34,69 @@ public class courseViewController {
     //댓글 등록update
     //댓글 조회select
 
+    @Setter(onMethod_ = @Autowired)
     private courseViewService service;
 
+    //list 반환
     @GetMapping("/list")
-    public void list(Model model) throws ServiceException { //여행지목록
+    public void list(Model model) throws ControllerException { //여행지목록
         log.info("list({}) invoked >>>", model);
 
-        model.addAttribute("list", service.getList());
+        try{
+            List<courseVO> list = this.service.getList();
+            model.addAttribute("__LIST__", list);
+        } catch (Exception e) {
+            throw new ControllerException(e);
+        }
+
     }
 
-    @GetMapping("/get")
-    public void get(@RequestParam("seq") int seq, Model model) throws ServiceException {
-        log.info("/get");
+    //상세조회
+    @GetMapping(path = "/get", params = {"seq"})
+    public void get(@RequestParam("seq") Integer seq, Model model) throws Exception {
+       log.trace("get() invoked");
 
-        model.addAttribute("board", service.get(seq));
+       try {
+           courseVO vo = this.service.get(seq);
+
+           model.addAttribute("__BOARD__", vo);
+       } catch (Exception e) {
+           throw new ControllerException(e);
+       }
     }
 
+    //수정하기
     @PostMapping("/modify")
-    public String modify(courseVO course, RedirectAttributes rttrs) throws ServiceException {
-        log.info("modify() invoked");
+    public String modify(courseDTO dto, RedirectAttributes rttrs) throws Exception {
+        log.trace("modify({}) invoked", dto);
 
-        if(service.modify(course)) {
-            rttrs.addFlashAttribute("result success");
+        try {
+            Objects.requireNonNull(dto);
+
+            if (this.service.modify(dto)) {
+                rttrs.addAttribute("result", "true");
+                rttrs.addAttribute("seq", dto.getSEQ());
+            }
+            return "redirect:/course/list";
+        } catch (Exception e) {
+            throw new ControllerException(e);
         }
-            return "redirect:/board/course/list";
-        }
+    }
 
 
     @PostMapping("/remove")
-    public String remove(@RequestParam("seq") int seq, RedirectAttributes rttrs) throws ServiceException {
-        log.info("remove() inovked");
-        if(service.remove(seq)) {
-            rttrs.addFlashAttribute("result success");
+    public String remove(@RequestParam("seq") Integer seq, RedirectAttributes rttrs) throws Exception {
+        log.trace("remove({}) inovked", seq);
+
+        try{
+            if(this.service.remove(seq)) {
+                rttrs.addAttribute("result", "true");
+                rttrs.addAttribute("seq", seq);
+            }
+            return "redirect:/board/course/list";
+        } catch (Exception e) {
+            throw new ControllerException(e);
         }
-        return "redirect:/board/course/list";
     }
 
 

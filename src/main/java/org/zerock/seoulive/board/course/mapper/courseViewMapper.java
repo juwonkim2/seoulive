@@ -1,12 +1,13 @@
 package org.zerock.seoulive.board.course.mapper;
 
 
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import org.zerock.seoulive.board.course.domain.courseDTO;
 import org.zerock.seoulive.board.course.domain.courseVO;
 
 import java.util.List;
-
+@Mapper
 @Repository
 public interface courseViewMapper {
 
@@ -17,5 +18,5 @@ public interface courseViewMapper {
 
     public int delete(int seq);
 
-    public int update(courseVO course);
+    public int update(courseDTO course);
 } //end interface

@@ -7,7 +7,7 @@
 <configuration>
 
     <mappers>
-<!--    	<mapper resource="org/zerock/seoulive/**/persistence/courseDAO" />-->
+    	<mapper resource="/mapper/courseViewMapper.xml" />
     </mappers>
 
 </configuration>

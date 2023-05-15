@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.seoulive.board.course.domain.courseDTO;
 import org.zerock.seoulive.board.course.domain.courseVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.course.mapper.courseViewMapper;
@@ -31,21 +32,21 @@ public class courseViewServiceImpl implements courseViewService{
     private courseViewMapper mapper;
 
     @Override
-    public courseVO get(int seq) throws ServiceException {
+    public courseVO get(Integer seq) throws ServiceException {
         log.info("get invoked >>>");
 
         return mapper.read(seq);
     }
 
     @Override
-    public boolean modify(courseVO course) throws ServiceException {
+    public boolean modify(courseDTO course) throws ServiceException {
         log.info("modify invoked >>>");
 
         return mapper.update(course) ==1;
     }
 
     @Override
-    public boolean remove(int seq) throws ServiceException {
+    public boolean remove(Integer seq) throws ServiceException {
         log.info("remove invoked >>>");
 
         return mapper.delete(seq) ==1;

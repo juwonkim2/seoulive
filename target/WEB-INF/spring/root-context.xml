@@ -45,12 +45,14 @@
 	</bean>
 
 	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.course.mapper" />
 
 	<!-- ================= Start Of AOP ================== -->
 
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
 
+	<context:component-scan base-package="org.zerock.seoulive.board.course" />
 	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
 	<context:component-scan base-package="org.zerock.seoulive.board.course.persistence" />
 
