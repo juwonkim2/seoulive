@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jyw
-  Date: 2023-05-11
-  Time: 오후 5:00
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -29,6 +23,10 @@
     <jsp:include page="../../layout/header.jsp"/>
 </head>
 <body>
+
+    <code>${__LIST__}</code>
+
+
     <div class="plan_page">
         <div class="plan_cover">
             <div class="cover_img"><img src="https://picsum.photos/id/1081/600/400"></div>
@@ -105,65 +103,6 @@
                     Day2
                 </div>
             </div>
-
-            <div class="planpage_title">2020.04.06</div>
-            <div class="planpage_daytitle">광화문</div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-        </div>
-        <div class="wrap_planpage2">
-            <!-- day 박스 -->
-            <div class="planpage_day">
-                <div class="planpage_daytxt">
-                    Day3
-                </div>
-            </div>
-
-            <div class="planpage_title">2020.05.06</div>
-            <div class="planpage_daytitle">광화문</div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-        </div>
 
 
         <!-- 맵 -->

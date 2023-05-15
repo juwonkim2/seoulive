@@ -4,55 +4,63 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.zerock.seoulive.board.course.exception.DAOException;
+import org.zerock.seoulive.board.course.domain.courseVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
+import org.zerock.seoulive.board.course.mapper.courseViewMapper;
+
+import java.util.List;
 
 @Log4j2
 @NoArgsConstructor
 
-@Service("courseService")
+//@RequiredArgsConstructor
+@Service("courseViewService")
+
+//특정 게시물 상세조회select(여행지 목록 클릭)
+//특정 게시물 삭제delete
+//댓글 등록update
+//댓글 조회select
+//댓글 삭제
+//댓글 개수 반환
+//맵api
+
+
 public class courseViewServiceImpl implements courseViewService{
-    //특정 게시물 상세조회select(여행지 목록 클릭)
-    //특정 게시물 삭제delete
-    //댓글 등록update
-    //댓글 조회select
-    //댓글 삭제
-    //댓글 개수 반환
-    //맵api
-
-
-
+    @Setter(onMethod_ = @Autowired )
+    private courseViewMapper mapper;
 
     @Override
-    public Boolean viewDelete(Integer seq) throws ServiceException {
-        log.trace("viewDelete() invoked");
+    public courseVO get(int seq) throws ServiceException {
+        log.info("get invoked >>>");
 
-        return null;
+        return mapper.read(seq);
     }
 
     @Override
-    public Boolean commRigster() throws ServiceException{
-        log.trace("commRigster() invoked");
-        return null;
+    public boolean modify(courseVO course) throws ServiceException {
+        log.info("modify invoked >>>");
+
+        return mapper.update(course) ==1;
     }
+
     @Override
-    public Boolean commSelect() throws ServiceException{
-        log.trace("commSelect() invoked");
-        return null;
+    public boolean remove(int seq) throws ServiceException {
+        log.info("remove invoked >>>");
+
+        return mapper.delete(seq) ==1;
     }
+
     @Override
-    public Boolean commDelete() throws ServiceException{
-        log.trace("commDelete() invoked");
-        return null;
+    public List<courseVO> getList() throws ServiceException {
+
+        log.info("getList invoked >>> ");
+
+        return mapper.getList();
     }
-    @Override
-    public Integer getTotal() throws DAOException {
-        log.trace("getTotal() invoked");
-        return null;
-    }
+
+
+
 
 
 
