@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.zerock.seoulive.board.course.mapper.commentMapper">
+
+    <insert id="insert">
+        insert into tbl_comment (seq, writer,content)
+        values (#{seq}, #{writer}, #{content})
+    </insert>
+
+    <select id="read" resultType="org.zerock.seoulive.board.course.domain.commVO">
+        select * from tbl_comment where seq= #{seq}
+    </select>
+
+    <delete id="commDelete">
+        delete from tbl_comment where seq = #{seq}
+    </delete>
+
+    <update id="commUpdate">
+        update tbl_comment
+        set content = #{content},
+        modify_date = sysdate
+        where seq= #{seq}
+    </update>
+</mapper>

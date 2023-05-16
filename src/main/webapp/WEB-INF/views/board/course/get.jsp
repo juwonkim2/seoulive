@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="cover_bright">
-                    <span>${__BOARD__.REVIEW}.</span>
+                    <span>${__BOARD__.REVIEW}</span>
                 </div>
             </div>
         </div>
@@ -62,95 +62,33 @@
                 </div>
             </div>
 
-            <div class="planpage_title">2020.02.06</div>
+            <div class="planpage_title">${__BOARD__.DURATION_START}</div>
             <div class="planpage_daytitle">광화문</div>
 
             <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
+<%--                <div class="planpage_couse1pic"><img src="${__COURSETRAVELBOARD__.LINK}"></div>--%>
+                <div class="planpage_couse1pic"><a href="${__COURSETRAVELBOARD__.LINK}"><c:out value="${__COURSETRAVELBOARD__.LINK}"/>  </a> </div>
+                <div class="planpage_course1txt">${__COURSETRAVELBOARD__.TRAVEL_SEQ}</div>
+                <div class="planpage_course1review">${__COURSETRAVELBOARD__.USER_REVIEW}</div>
             </div>
 
             <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
+<%--                <div class="planpage_couse1pic"><img src="${__COURSETRAVELBOARD__.LINK}"></div>--%>
+    <div class="planpage_couse1pic"><c:out value="${__COURSETRAVELBOARD__.LINK} " /></div>
+                <div class="planpage_course1txt">${__COURSETRAVELBOARD__.TRAVEL_SEQ}</div>
+                <div class="planpage_course1review">${__COURSETRAVELBOARD__.USER_REVIEW}</div>
             </div>
             <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
+<%--                <div class="planpage_couse1pic"><img src="${__COURSETRAVELBOARD__.LINK}"></div>--%>
+    <div class="planpage_couse1pic"><c:out value="${__COURSETRAVELBOARD__.LINK} " /></div>
+                <div class="planpage_course1txt">${__COURSETRAVELBOARD__.TRAVEL_SEQ}</div>
+                <div class="planpage_course1review">${__COURSETRAVELBOARD__.USER_REVIEW}</div>
             </div>
             <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-        </div>
-        <div class="wrap_planpage2">
-            <!-- day 박스 -->
-            <div class="planpage_day">
-                <div class="planpage_daytxt">
-                    Day2
-                </div>
-            </div>
-
-            <div class="planpage_title">2020.04.06</div>
-            <div class="planpage_daytitle">광화문</div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-        </div>
-        <div class="wrap_planpage2">
-            <!-- day 박스 -->
-            <div class="planpage_day">
-                <div class="planpage_daytxt">
-                    Day3
-                </div>
-            </div>
-
-            <div class="planpage_title">2020.05.06</div>
-            <div class="planpage_daytitle">광화문</div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
-            </div>
-            <div class="planpage_course1">
-                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>
-                <div class="planpage_course1txt">여행지1</div>
-                <div class="planpage_course1review">리뷰입니다</div>
+<%--                <div class="planpage_couse1pic"><img src="/img/장미.jpg"></div>--%>
+                <div class="planpage_couse1pic"><c:out value="${__COURSETRAVELBOARD__.LINK} " /></div>
+                <div class="planpage_course1txt">${__COURSETRAVELBOARD__.TRAVEL_SEQ}</div>
+                <div class="planpage_course1review">${__COURSETRAVELBOARD__.USER_REVIEW}</div>
             </div>
         </div>
 

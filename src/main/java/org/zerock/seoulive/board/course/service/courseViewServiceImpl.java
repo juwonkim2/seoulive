@@ -6,6 +6,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.courseDTO;
+import org.zerock.seoulive.board.course.domain.courseTravelDTO;
+import org.zerock.seoulive.board.course.domain.courseTravelVO;
 import org.zerock.seoulive.board.course.domain.courseVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.course.mapper.courseViewMapper;
@@ -32,32 +34,58 @@ public class courseViewServiceImpl implements courseViewService{
     private courseViewMapper mapper;
 
     @Override
-    public courseVO get(Integer seq) throws ServiceException {
-        log.info("get invoked >>>");
+    public courseVO get(Integer seq_course) throws ServiceException {
+        log.trace("courseVO() invoked");
 
-        return mapper.read(seq);
-    }
+        return mapper.read(seq_course);
+    } //상세조회
 
     @Override
     public boolean modify(courseDTO course) throws ServiceException {
-        log.info("modify invoked >>>");
+        log.trace("modify() invoked");
 
         return mapper.update(course) ==1;
     }
 
     @Override
-    public boolean remove(Integer seq) throws ServiceException {
-        log.info("remove invoked >>>");
+    public boolean remove(Integer seq_course) throws ServiceException {
+        log.trace("remove() invoked");
 
-        return mapper.delete(seq) ==1;
+        return mapper.delete(seq_course) ==1;
     }
 
     @Override
     public List<courseVO> getList() throws ServiceException {
-
-        log.info("getList invoked >>> ");
+        log.trace("getList() invoked");
 
         return mapper.getList();
+    } //list 전체 반환
+
+
+//    =============== course_travel =================
+
+    @Override
+    public List<courseTravelVO> courseTravelGetList(Integer seq_courseTravel) throws ServiceException {
+        log.trace("getCourseTravelList() invoked");
+
+        return mapper.courseTravelGetList(seq_courseTravel);
+    }
+
+    @Override
+    public boolean modifyCoTravel(courseTravelDTO courseTravel) throws ServiceException {
+        log.trace("modifyCoTravel() invoked");
+
+        return mapper.CourseTravelUpdate(courseTravel) ==1;
+    }
+
+
+
+
+    @Override
+    public boolean removeCoTravel(Integer seq_courseTravel) throws ServiceException {
+        log.trace("removeCoTravel() invoked");
+
+        return mapper.courseTravelDelete(seq_courseTravel) ==1;
     }
 
 

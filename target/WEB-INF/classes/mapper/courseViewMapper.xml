@@ -33,4 +33,27 @@
         where seq = #{seq}
     </update>
 
+
+
+
+    <select id="courseTravelGetList" resultType="org.zerock.seoulive.board.course.domain.courseTravelVO">
+        SELECT * FROM tbl_course_travel WHERE board_seq = #{board_seq} order by seq
+    </select>
+
+    <delete id="courseTravelDelete">
+        delete from tbl_course_travel where seq = #{seq}
+    </delete>
+
+    <update id="CourseTravelUpdate">
+        update tbl_course_travel
+        set board_seq = #{board_seq},
+        upload_seq = #{upload_seq},
+        link = #{link},
+        user_review = #{user_review}
+        where seq= #{seq}
+    </update>
+
+
+
+
 </mapper>
