@@ -74,13 +74,13 @@
 
             <div class="planpage_course1">
 <%--                <div class="planpage_couse1pic"><img src="${__COURSETRAVELBOARD__.LINK}"></div>--%>
-    <div class="planpage_couse1pic"><c:out value="${__COURSETRAVELBOARD__.LINK} " /></div>
+                <div class="planpage_couse1pic"><c:out value="${__COURSETRAVELBOARD__.LINK} " /></div>
                 <div class="planpage_course1txt">${__COURSETRAVELBOARD__.TRAVEL_SEQ}</div>
                 <div class="planpage_course1review">${__COURSETRAVELBOARD__.USER_REVIEW}</div>
             </div>
             <div class="planpage_course1">
 <%--                <div class="planpage_couse1pic"><img src="${__COURSETRAVELBOARD__.LINK}"></div>--%>
-    <div class="planpage_couse1pic"><c:out value="${__COURSETRAVELBOARD__.LINK} " /></div>
+                <div class="planpage_couse1pic"><c:out value="${__COURSETRAVELBOARD__.LINK} " /></div>
                 <div class="planpage_course1txt">${__COURSETRAVELBOARD__.TRAVEL_SEQ}</div>
                 <div class="planpage_course1review">${__COURSETRAVELBOARD__.USER_REVIEW}</div>
             </div>

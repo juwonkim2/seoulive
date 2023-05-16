@@ -5,10 +5,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.seoulive.board.course.domain.courseDTO;
-import org.zerock.seoulive.board.course.domain.courseTravelDTO;
-import org.zerock.seoulive.board.course.domain.courseTravelVO;
-import org.zerock.seoulive.board.course.domain.courseVO;
+import org.zerock.seoulive.board.course.domain.*;
 import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.course.mapper.courseViewMapper;
 
@@ -34,10 +31,10 @@ public class courseViewServiceImpl implements courseViewService{
     private courseViewMapper mapper;
 
     @Override
-    public courseVO get(Integer seq_course) throws ServiceException {
+    public courseVO get(Integer seq) throws ServiceException {
         log.trace("courseVO() invoked");
 
-        return mapper.read(seq_course);
+        return mapper.read(seq);
     } //상세조회
 
     @Override
@@ -48,10 +45,10 @@ public class courseViewServiceImpl implements courseViewService{
     }
 
     @Override
-    public boolean remove(Integer seq_course) throws ServiceException {
+    public boolean remove(Integer seq) throws ServiceException {
         log.trace("remove() invoked");
 
-        return mapper.delete(seq_course) ==1;
+        return mapper.delete(seq) ==1;
     }
 
     @Override
@@ -65,10 +62,10 @@ public class courseViewServiceImpl implements courseViewService{
 //    =============== course_travel =================
 
     @Override
-    public List<courseTravelVO> courseTravelGetList(Integer seq_courseTravel) throws ServiceException {
+    public List<courseTravelVO> courseTravelGetList(Integer seq) throws ServiceException {
         log.trace("getCourseTravelList() invoked");
 
-        return mapper.courseTravelGetList(seq_courseTravel);
+        return mapper.courseTravelGetList(seq);
     }
 
     @Override
@@ -78,18 +75,12 @@ public class courseViewServiceImpl implements courseViewService{
         return mapper.CourseTravelUpdate(courseTravel) ==1;
     }
 
-
-
-
     @Override
-    public boolean removeCoTravel(Integer seq_courseTravel) throws ServiceException {
+    public boolean removeCoTravel(Integer seq) throws ServiceException {
         log.trace("removeCoTravel() invoked");
 
-        return mapper.courseTravelDelete(seq_courseTravel) ==1;
+        return mapper.courseTravelDelete(seq) ==1;
     }
-
-
-
 
 
 

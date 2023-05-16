@@ -16,17 +16,17 @@ public interface courseViewMapper {
 //    @Select("select * from tbl_course where seq > 0")
     public List<courseVO> getList();
 
-    public courseVO read(Integer seq_course);
+    public courseVO read(Integer seq);
 
-    public Integer delete(Integer seq_course);
+    public Integer delete(Integer seq);
 
     public Integer update(courseDTO course);
 
 //    =============== course_travel ===================
 
-    public List<courseTravelVO> courseTravelGetList(Integer seq_courseTravel);
+    public List<courseTravelVO> courseTravelGetList(Integer seq);
 
-    public Integer courseTravelDelete(Integer seq_courseTravel);
+    public Integer courseTravelDelete(Integer seq);
 
     public Integer CourseTravelUpdate(courseTravelDTO courseTravel);
 

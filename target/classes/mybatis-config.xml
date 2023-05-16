@@ -8,6 +8,7 @@
 
     <mappers>
     	<mapper resource="/mapper/courseViewMapper.xml" />
+        <mapper resource="/mapper/commentMapper.xml" />
     </mappers>
 
 </configuration>

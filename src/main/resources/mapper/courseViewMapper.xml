@@ -9,7 +9,7 @@
     <select id="getList" resultType="org.zerock.seoulive.board.course.domain.courseVO">
         SELECT *
         FROM tbl_course
-        WHERE seq > 0
+        WHERE seq  <![CDATA[>]]> 0
     </select>
 
     <select id="read" resultType="org.zerock.seoulive.board.course.domain.courseVO">
@@ -35,9 +35,11 @@
 
 
 
-
     <select id="courseTravelGetList" resultType="org.zerock.seoulive.board.course.domain.courseTravelVO">
-        SELECT * FROM tbl_course_travel WHERE board_seq = #{board_seq} order by seq
+        SELECT tct.* , tt.title, tt.address
+        FROM tbl_course_travel tct JOIN tbl_travel tt
+        ON tct.travel_seq = tt.seq
+        WHERE board_seq = #{seq}
     </select>
 
     <delete id="courseTravelDelete">

@@ -1,6 +1,5 @@
 package org.zerock.seoulive.board.course.controller;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
@@ -13,12 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.zerock.seoulive.board.course.domain.courseDTO;
-import org.zerock.seoulive.board.course.domain.courseTravelDTO;
-import org.zerock.seoulive.board.course.domain.courseTravelVO;
-import org.zerock.seoulive.board.course.domain.courseVO;
+import org.zerock.seoulive.board.course.domain.*;
 import org.zerock.seoulive.board.course.exception.ControllerException;
 import org.zerock.seoulive.board.course.exception.ServiceException;
+import org.zerock.seoulive.board.course.service.courseCommService;
 import org.zerock.seoulive.board.course.service.courseViewService;
 
 import java.util.List;
@@ -34,11 +31,12 @@ public class courseViewController {
     //특정 게시물 상세조회select
     //특정 게시물 삭제delete
     //맵api
-    //댓글 등록update
-    //댓글 조회select
+
 
     @Setter(onMethod_ = @Autowired)
     private courseViewService service;
+    @Setter(onMethod_ = @Autowired)
+    private courseCommService commService;
 
     //전체 list목록 반환
     @GetMapping("/list")
@@ -48,6 +46,7 @@ public class courseViewController {
         try{
             List<courseVO> list = this.service.getList();
             model.addAttribute("__LIST__", list);
+
         } catch (Exception e) {
             throw new ControllerException(e);
         }
@@ -55,18 +54,24 @@ public class courseViewController {
     }
 
     //상세조회
-    @GetMapping(path = "/get", params = {"seq_course", "board_seq"})
-    public void get(@RequestParam("seq_course") Integer seq_course, Integer board_seq, Model model) throws Exception {
+    @GetMapping(path = "/get")
+    public String get(@RequestParam(value ="seq") Integer seq, Model model) throws Exception {
        log.trace("get() invoked");
 
        try {
-           courseVO vo = this.service.get(seq_course);
-           List<courseTravelVO> tr_vo = this.service.courseTravelGetList(board_seq);
+
+           //courseVO
+           courseVO vo = this.service.get(seq);
+           List<courseTravelVO> tr_vo = this.service.courseTravelGetList(seq);
+//           courseVO vo2 = this.service.courseTravelGetList(seq);
+           //CommentVO
+           commVO commvo = this.commService.getListcourseComm(seq);
 
            model.addAttribute("__BOARD__", vo);
            model.addAttribute("__COURSETRAVELBOARD__", tr_vo);
+           model.addAttribute("__COMMENT__", commvo);
 
-
+           return "board/course/get";
        } catch (Exception e) {
            throw new ControllerException(e);
        }
@@ -85,8 +90,8 @@ public class courseViewController {
                 rttrs.addAttribute("result", "true");
                 rttrs.addAttribute("seq", dto.getSEQ());
 
-                rttrs.addAttribute("seq_courseTravel", coursedto.getSEQ());
-            }
+
+                }
             return "redirect:/course/list";
         } catch (Exception e) {
             throw new ControllerException(e);

@@ -6,13 +6,16 @@
 
 <mapper namespace="org.zerock.seoulive.board.course.mapper.commentMapper">
 
-    <insert id="insert">
+    <insert id="commInsert">
         insert into tbl_comment (seq, writer,content)
         values (#{seq}, #{writer}, #{content})
     </insert>
 
-    <select id="read" resultType="org.zerock.seoulive.board.course.domain.commVO">
-        select * from tbl_comment where seq= #{seq}
+    <!--board_name = 게시판, post_seq == 게시물 번호?? -->
+    <select id="commRead" resultType="org.zerock.seoulive.board.course.domain.commVO">
+        select *
+        from tbl_comment
+        where post_seq= #{seq}
     </select>
 
     <delete id="commDelete">
