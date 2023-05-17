@@ -12,5 +12,6 @@ public class CourseTravelDTO {
     private Integer UPLOAD_SEQ;
     private String LINK;
     private String USER_REVIEW;
+    
 
 } // end class

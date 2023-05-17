@@ -15,5 +15,6 @@ public class CourseVO {
     private Date MODIFY_DATE;
     private Date DURATION_START;
     private Date DURATION_END;
+    
 
 } // end class

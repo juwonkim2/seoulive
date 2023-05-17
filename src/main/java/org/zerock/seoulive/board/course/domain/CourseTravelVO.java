@@ -11,5 +11,10 @@ public class CourseTravelVO {
     private Integer UPLOAD_SEQ;
     private String LINK;
     private String USER_REVIEW;
+    
+    private String CATEGORY;
+    private String TITLE;
+    private String CONTENT;
+    private String ADDRESS;
 
 } // end class

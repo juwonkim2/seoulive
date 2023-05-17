@@ -7,7 +7,7 @@
 <configuration>
 
     <mappers>
-    	<mapper resource="org/zerock/myapp/persistence/UserDAOMapper.xml" />
+    	
     </mappers>
 
 </configuration>

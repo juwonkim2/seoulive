@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Course_list</title>
+    <title>Course_search</title>
 
     <!-- layout css -->
     <!-- main css -->
@@ -37,7 +37,10 @@
 
             $('.pageNum').on('click', function (e) {
                 let seletedPageNum = e.currentTarget.textContent;
-                location.href = "/board/course/list?currPage="+seletedPageNum;
+                let searchType="${search.searchType}";
+                let keyword="${search.keyword}";
+                
+                location.href = "/board/course/search?searchType="+searchType+"&keyword="+keyword+"&currPage="+seletedPageNum;
             }); // onclick
 
 
@@ -91,7 +94,7 @@
             <option value="REVIEW">내용</option>
         </select>
         <input class="search_box" type="text" name="keyword" placeholder="검색어를 입력해주세요.">
-        <input class="search_button" type="submit" name="search" value="검색">
+        <input class="search_button" type="submit" value="검색">
     </form>
     <input class="make_button" type="button" name="make" value="작성">
 </div>
@@ -134,7 +137,7 @@
 		<ul>
 			<c:if test="${pageMaker.prev}">
 				<li class="Prev">
-					<a href="/board/course/list?currPage=${pageMaker.startPage-1}">Prev</a>
+					<a href="/board/course/search?searchType=${search.searchType}&keyword=${search.keyword}&currPage=${pageMaker.startPage-1}">Prev</a>
 				</li>
 			</c:if>
 	
@@ -147,7 +150,7 @@
 	
 			<c:if test="${pageMaker.next}">
 				<li class="Next">
-					<a href="/board/course/list?currPage=${pageMaker.endPage+1}">Next</a>
+					<a href="/board/course/search?searchType=${search.searchType}&keyword=${search.keyword}&currPage=${pageMaker.endPage+1}">Next</a>
 				</li>
 			</c:if>
 		</ul>

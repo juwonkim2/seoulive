@@ -1,0 +1,70 @@
+@charset "utf8";
+
+.write {
+    border: 1px solid black;
+    width: 1200px;
+}
+
+.write .write_func {
+    border-bottom: 1px solid #777;
+    padding: 20px;
+    height: 30px;
+}
+
+.write .write_day {
+    border-top: 3px solid #777;
+    border-bottom: 3px solid #777;
+}
+
+.write .write_day .write_day_top {
+    border-bottom: 1px solid #DDD;
+    padding: 20px;
+    height: 50px;
+}
+
+.write .write_day .write_day_dec_choice {
+    border-bottom: 1px solid #DDD;
+    padding: 20px;
+    height: 120px;
+    
+}
+
+.write .write_day .write_day_dec_search {
+    border-bottom: 1px solid #DDD;
+    padding: 20px;
+    height: 120px;
+    
+}
+
+.write .write_day .write_day_dec_choice > div {
+    float: left;
+}
+
+.write .write_day .write_day_dec_choice::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.write .write_day .write_day_dec_choice:last-of-type {
+    border-bottom: 0px;
+}
+
+.write .write_day .dec_plus {
+    border-bottom: 2px solid #777;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.write .write_day .day_plus {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.write .write_button {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}

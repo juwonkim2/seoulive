@@ -1,106 +1,65 @@
 package org.zerock.seoulive.board.course.persistence;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CoursePageTO;
+import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Repository;
-import org.zerock.seoulive.board.course.domain.CourseVO;
-import org.zerock.seoulive.board.course.exception.DAOException;
-
-import java.util.ArrayList;
-import java.util.List;
-
 @Log4j2
 @AllArgsConstructor
 
-@Repository("CourseDAO")
-public class CourseDAOImpl implements CourseDAO, InitializingBean {
+@Repository("courseDAO")
+public class CourseDAOImpl implements CourseDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
 
-    private SqlSessionFactory sqlSessionFactory;
+	@Override
+	public List<CourseDTO> courseList(CoursePageTO page) {
+		return sqlSession.selectList("courseList", page);
+	}
 
-    @Override
-    public List<CourseVO> list() throws DAOException {
-        log.trace("list() invoked.");
+	@Override
+	public int getTotalAmount() {
+		return sqlSession.selectOne("getTotalAmount");
+	}
 
-        List<CourseVO> list = new ArrayList<CourseVO>();
+	@Override
+	public List<CourseTravelVO> selectTravelList(CourseDTO dto) {
+		return sqlSession.selectList("selectTravelList", dto);
+	}
 
-        SqlSession sqlSession = this.sqlSessionFactory.openSession();
+	@Override
+	public List<CourseDTO> searchCourse(Integer currPage, Integer amount, String searchType, String keyword) {
+		log.trace("searchCourse() invoked.");
+		
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("currPage", currPage);
+		paramMap.put("amount", amount);
+		paramMap.put("category", searchType);
+        paramMap.put("keyword", keyword);
+        log.info(paramMap);
+        
+        return sqlSession.selectList("searchCourse", paramMap);
+	}
 
-        try(sqlSession) {
+	@Override
+	public int getTotalSearch(String searchType, String keyword) {
 
-            String namespace = "org.zerock.seoulive.board.course.persistence.CourseDAO";
-            String sqlId = "list";
-            String sql = namespace+"."+sqlId;
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("category", searchType);
+        paramMap.put("keyword", keyword);
+		return sqlSession.selectOne("getTotalSearch", paramMap);
+	}
 
-            return sqlSession.selectOne(sql);
-        } catch(Exception e) {
-            throw new DAOException(e);
-        } // try-with-resources
-    } // end list
-
-    @Override
-    public void write() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
-
-    @Override
-    public void readCount() {
-
-    }
-
-    @Override
-    public CourseVO retrieve() {
-        return null;
-    }
-
-    @Override
-    public List<CourseVO> search() {
-        return null;
-    }
-
-    @Override
-    public CourseVO replyui() {
-        return null;
-    }
-
-    @Override
-    public void makeReply() {
-
-    }
-
-    @Override
-    public void reply() {
-
-    }
-
-    @Override
-    public int totalCount() {
-        return 0;
-    }
-
-    @Override
-    public void page() {
-
-    }
-
-//    ----------------------
-    @Override
-    public void afterPropertiesSet() throws Exception {
-
-    }
-
-} // end class
+}

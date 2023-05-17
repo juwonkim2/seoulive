@@ -1,8 +1,9 @@
 package org.zerock.seoulive.board.course.domain;
 
-import lombok.Data;
-
 import java.util.Date;
+import java.util.List;
+
+import lombok.Data;
 
 @Data
 public class CourseDTO {
@@ -15,7 +16,8 @@ public class CourseDTO {
     private Date MODIFY_DATE;
     private Date DURATION_START;
     private Date DURATION_END;
-
+    
+    private List<CourseTravelVO> listVO;
 } // end class
 
 

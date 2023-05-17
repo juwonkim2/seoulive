@@ -11,19 +11,20 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
-	<!-- <context:component-scan base-package="org.zerock.seoulive.domain" /> -->
+	<!-- <context:component-scan base-package="org.zerock.myapp.domain" /> -->
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-<!--git 제외33-->
 	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-
+		<!-- <property name="driverClassName" value="oracle.jdbc.OracleDriver"/> -->
+		<!-- <property name="jdbcUrl" value="jdbc:oracle:thin:@seoul?TNS_ADMIN=C:/u01/oracle/product/19.3.0/dbhome/network/admin"/> -->
+		<!-- <property name="jdbcUrl" value="jdbc:oracle:thin:@atp20192101_high?TNS_ADMIN=C:/opt/OracleCloudWallet/ATP"/> -->
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@o9o6yubutmsjch3b_high?TNS_ADMIN=C:/opt/OracleCloudWallet/VFX" />
-		<property name="username" value="SEOULIVE"/>
+		<property name="username" value="seoulive"/>
 		<property name="password" value="Oracle12345678"/>
 
-		<property name="maximumPoolSize" value="30"/>
+		<property name="maximumPoolSize" value="10"/>
 		<property name="minimumIdle" value="2"/>
 		<property name="idleTimeout" value="10000"/>
 		<property name="connectionTimeout" value="1000"/>
@@ -39,22 +40,21 @@
 		<constructor-arg ref="hikariConfig"/>
 	</bean>
 
-<!--	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-<!--		<property name="dataSource" ref="hikariDataSource"/>-->
-<!--		<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
-<!--		&lt;!&ndash; <property name="mapperLocations" value="classpath:mappers/*.xml"/> &ndash;&gt;-->
-<!--	</bean>-->
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="hikariDataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<!-- <property name="mapperLocations" value="classpath:mappers/*.xml"/> -->
+	</bean>
 
-	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
+	<mybatis-spring:scan base-package="org.zerock.seoulive.board.course.persistence" />
+
 	
 	<!-- ================= Start Of AOP ================== -->
 	
 	<context:annotation-config />
 	<aop:aspectj-autoproxy />
 
-	<context:component-scan base-package="org.zerock.seoulive.service" />
-	<context:component-scan base-package="org.zerock.seoulive.persistence" />
-
+	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
 	<!-- ================= End Of AOP ================== -->
 	
 	<!-- ================= Start Of Dtributed TX ================== -->
