@@ -6,23 +6,26 @@
 
 <mapper namespace="org.zerock.seoulive.board.course.mapper.commentMapper">
 
-    <insert id="commInsert">
-        insert into tbl_comment (seq, writer,content)
-        values (#{seq}, #{writer}, #{content})
+    <!-- 작성   -->
+    <insert id="commInsert" parameterType = "org.zerock.seoulive.board.course.domain.commVO">
+        insert into tbl_comment (seq, writer,content,write_date)
+        values (#{seq}, #{writer}, #{content}, #{write_date})
     </insert>
 
-    <!--board_name = 게시판, post_seq == 게시물 번호?? -->
+    <!--조회-->
     <select id="commRead" resultType="org.zerock.seoulive.board.course.domain.commVO">
-        select *
+        select board_name, post_seq, seq, writer, content, write_date
         from tbl_comment
-        where post_seq= #{seq}
+        where board_name= #{board_name} AND post_seq = #{post_seq}
     </select>
 
-    <delete id="commDelete">
+    <!-- 삭제 -->
+    <delete id="commDelete" parameterType="org.zerock.seoulive.board.course.domain.commVO">
         delete from tbl_comment where seq = #{seq}
     </delete>
 
-    <update id="commUpdate">
+    <!-- 수정   -->
+    <update id="commUpdate" parameterType="org.zerock.seoulive.board.course.domain.commVO">
         update tbl_comment
         set content = #{content},
         modify_date = sysdate

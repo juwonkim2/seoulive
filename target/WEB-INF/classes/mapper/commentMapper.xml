@@ -15,7 +15,7 @@
     <select id="commRead" resultType="org.zerock.seoulive.board.course.domain.commVO">
         select *
         from tbl_comment
-        where post_seq= #{seq}
+        where post_seq= #{seq} AND board_name = #{board_name}
     </select>
 
     <delete id="commDelete">

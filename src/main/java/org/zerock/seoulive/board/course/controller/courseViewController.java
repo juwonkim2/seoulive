@@ -54,24 +54,23 @@ public class courseViewController {
     }
 
     //상세조회
-    @GetMapping(path = "/get")
-    public String get(@RequestParam(value ="seq") Integer seq, Model model) throws Exception {
+    @GetMapping(path = "/get", params = {"seq", "board_name"})
+    public String get(@RequestParam(value ="board_name") Integer seq, String board_name, Model model) throws Exception {
        log.trace("get() invoked");
 
        try {
-
-           //courseVO
-           courseVO vo = this.service.get(seq);
-           List<courseTravelVO> tr_vo = this.service.courseTravelGetList(seq);
+               courseVO vo = this.service.get(seq);
+               List<courseTravelVO> tr_vo = this.service.courseTravelGetList(seq);
 //           courseVO vo2 = this.service.courseTravelGetList(seq);
-           //CommentVO
-           commVO commvo = this.commService.getListcourseComm(seq);
+               //CommentVO
+               commVO commvo = this.commService.getListcourseComm(seq);
 
-           model.addAttribute("__BOARD__", vo);
-           model.addAttribute("__COURSETRAVELBOARD__", tr_vo);
-           model.addAttribute("__COMMENT__", commvo);
+               model.addAttribute("__BOARD__", vo);
+               model.addAttribute("__COURSETRAVELBOARD__", tr_vo);
+               model.addAttribute("__COMMENT__", commvo);
 
-           return "board/course/get";
+               return "board/course/get";
+
        } catch (Exception e) {
            throw new ControllerException(e);
        }
