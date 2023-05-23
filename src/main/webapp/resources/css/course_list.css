@@ -59,16 +59,24 @@
     justify-content: center;
 }
 
+.course_object_size {
+	height: 562px;
+	margin: 0px;
+	padding: 0px;
+	
+	float: left;
+}
+
 .course_list .course_object {
     border: 1px solid rgb(230, 230, 230);
     width: 380px;
     height: auto;
     margin: 20px;
-
+	
     position: relative;
 
-    float: left;
 }
+
 
 .course_list::after {
     content: '';

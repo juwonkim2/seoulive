@@ -1,23 +1,20 @@
 package org.zerock.seoulive.board.course.domain;
 
 import java.util.Date;
-import java.util.List;
 
 import lombok.Data;
 
 @Data
-public class CourseDTO {
-    private Integer seq;
+public class CourseWriteDTO {
     private String WRITER;
     private String TITLE;
     private String REVIEW;
-//    private Integer TOTAL;
-//    private Date WRITE_DATE;
-//    private Date MODIFY_DATE;
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date DURATION_START;
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date DURATION_END;
     
-    private List<CourseTravelVO> listVO;
+//    private List<CourseWriteVO> listVO;
 } // end class
 
 

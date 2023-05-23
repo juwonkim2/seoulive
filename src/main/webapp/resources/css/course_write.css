@@ -1,70 +1,144 @@
-@charset "utf8";
-
-.write {
-    border: 1px solid black;
+#container{
+    height:100vh;
+    /* display: blo; */
+}
+#form{
+    height: 100vh;
+    display: flex;
+}
+.write_func{
+    height:10vh;
     width: 1200px;
+    border: 1px solid black;
 }
 
-.write .write_func {
-    border-bottom: 1px solid #777;
+
+.write_day_top {
+    border-bottom: 1px solid #DDD;
+    /* width: 500px; */
     padding: 20px;
+
+}
+
+.Total_Place>div {
+    border-bottom: 1px solid #DDD;
+    padding: 20px;
+}
+
+#tables {
+    border: 1px solid blue;
+    width: 450px;
+    height: 100px;
+}
+
+#main {
+    width: 1200px;
+    height: auto;
+    /* border: 1px solid black; */
+
+    /* position:relative; */
+    /* float:none; */
+    /* flex: auto; */
+    /* justify-content: center; */
+    /* display:block; */
+    display: flex;
+    align-items: center;
+    align-content: center;
+    /* position: relative; */
+}
+
+.Total_Day {
+    /* position: flex; */
+    width: 20%;
+    height: 450px;
+    /* justify-content: center; */
+    /* display: flex; */
+    border: 1px solid yellow;
+    /* align-items: center; */
+    /* align-content: center; */
+    /* border:1px dotted red; */
+}
+
+.Total_Day>#day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 20%; */
+}
+
+#map {
+    position: relative;
+    width: 40%;
+    height: 450px;
+    /* justify-content: center; */
+    /* display: inline-flex; */
+    border: 1px solid blue;
+}
+
+#map>img {
+    width: 100%;
+    height: 100%;
+}
+
+#mainBloack {
+    /* position: relative; */
+    height: 450px;
+    width: 40%;
+    border: 1px solid grey;
+    /* justify-content: center; */
+    display: flex;
+    /* background-color: red; */
+}
+
+#Subject {
+    display: grid;
+}
+
+
+
+#travle_btn {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#travle_day {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.InputBtn {
+
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.InsertBtn,
+.DeleteBtn {
+    width: 100px;
     height: 30px;
+    font-size: large;
+
 }
 
-.write .write_day {
-    border-top: 3px solid #777;
-    border-bottom: 3px solid #777;
-}
-
-.write .write_day .write_day_top {
-    border-bottom: 1px solid #DDD;
-    padding: 20px;
-    height: 50px;
-}
-
-.write .write_day .write_day_dec_choice {
-    border-bottom: 1px solid #DDD;
-    padding: 20px;
-    height: 120px;
-    
-}
-
-.write .write_day .write_day_dec_search {
-    border-bottom: 1px solid #DDD;
-    padding: 20px;
-    height: 120px;
-    
-}
-
-.write .write_day .write_day_dec_choice > div {
-    float: left;
-}
-
-.write .write_day .write_day_dec_choice::after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-.write .write_day .write_day_dec_choice:last-of-type {
-    border-bottom: 0px;
-}
-
-.write .write_day .dec_plus {
-    border-bottom: 2px solid #777;
-    padding: 20px;
+.Register {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.write .write_day .day_plus {
-    padding: 20px;
+.RegisterBtn {
     display: flex;
+    align-items: center;
     justify-content: center;
+    width: 100px;
+    height: 30px;
+    font-size: large;
 }
 
-.write .write_button {
-    padding: 20px;
+#test {
     display: flex;
-    justify-content: center;
 }

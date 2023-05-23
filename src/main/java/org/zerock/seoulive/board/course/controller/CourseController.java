@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
+import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
+import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ControllerException;
 import org.zerock.seoulive.board.course.service.CourseService;
+import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,27 +33,27 @@ public class CourseController {
 	
 	
 	// 1. 게시판 목록 조회
-	@GetMapping("/list")
-	void list(CoursePageTO page, Model model) throws ControllerException {
-		log.trace("list({}, {}) invoked.", page, model);
-		
-		try {
-			List<CourseDTO> list = this.service.getList(page);
-			
-			for (int i = 0; i<list.size(); i++) {
-				list.get(i).setListVO(this.service.getTravelList(list.get(i)));
-			} // for
-			model.addAttribute("__LIST__", list);
-			
-			CoursePageDTO pageDTO = new CoursePageDTO(page, this.service.getTotal());
-			model.addAttribute("pageMaker", pageDTO);
-		} catch(Exception e) {
-			throw new ControllerException(e);
-		} // try-catch
-	} // list
+//	@GetMapping("/list")
+//	void list(CoursePageTO page, Model model) throws ControllerException {
+//		log.trace("list({}, {}) invoked.", page, model);
+//		
+//		try {
+//			List<CourseDTO> list = this.service.getList(page);
+//			
+//			for (int i = 0; i<list.size(); i++) {
+//				list.get(i).setListVO(this.service.getTravelList(list.get(i)));
+//			} // for
+//			model.addAttribute("__LIST__", list);
+//			
+//			CoursePageDTO pageDTO = new CoursePageDTO(page, this.service.getTotal());
+//			model.addAttribute("pageMaker", pageDTO);
+//		} catch(Exception e) {
+//			throw new ControllerException(e);
+//		} // try-catch
+//	} // list
 	
 	// 2. 검색 후 게시판 목록 조회
-	@GetMapping("/list?*")
+	@GetMapping("/list")
 	void search(CoursePageTO page, Model model) throws ControllerException {
 		log.trace("list({}, {}) invoked.", page, model);
 		
@@ -66,8 +70,7 @@ public class CourseController {
 			
 			CoursePageDTO pageDTO = new CoursePageDTO(page, this.service.getTotalSearch(page));
 			model.addAttribute("pageMaker", pageDTO);
-			
-			
+
 		} catch(Exception e) {
 			throw new ControllerException(e);
 		} // try-catch
@@ -75,32 +78,58 @@ public class CourseController {
 	
 	
 	
-//	// 2. 새로운 게시물 등록
-//	@PostMapping(path="/register", params= {"title", "content", "writer"})
-//	String register(CourseDTO dto, RedirectAttributes rttrs) throws ControllerException {
-//		log.trace("register({}, {}) invoked.", dto, rttrs);
-//		
-//		try {
-//			Objects.requireNonNull(dto);
-//			
-//			if(this.service.register(dto)) {
-//				rttrs.addAttribute("result", "true");
-//				rttrs.addAttribute("bno", dto.getSeq());
-//			} // if
-//			
-//			return "redirect:/board/course/list";
-//		} catch(Exception e) {
-//			throw new ControllerException(e);
-//		} // try-catch
-//	} // register
-//	
-//	@GetMapping(path="/register")
-//	void register() {	// 단순 등록화면 요청
-//		log.trace("register() invoked.");
-//		
-//	} // register
-//	
-//	
+	// 2. 새로운 게시물 등록
+	@PostMapping(path="/register")
+	String register(CourseWriteDTO dto) throws ControllerException {
+		log.trace("register({}) invoked.", dto);
+		
+		try {
+			
+			this.service.register(dto);
+			
+			return "redirect:/board/course/list";
+		} catch(Exception e) {
+			throw new ControllerException(e);
+		} // try-catch
+	} // register
+	
+	@PostMapping(path="/registerTravel")
+	String registerTravel(CourseWriteVO vo) throws ControllerException {
+		log.trace("register({}) invoked.", vo);
+		
+		try {
+			
+			this.service.registerTravel(vo);
+			
+			return null;
+		} catch(Exception e) {
+			throw new ControllerException(e);
+		} // try-catch
+	} // register
+	
+	
+	@GetMapping(path="/register")
+	String register() {	// 단순 등록화면 요청
+		log.trace("register() invoked.");
+		
+		
+		return "/board/course/write";
+	} // register
+	
+	// 작성시 여행지 검색
+	@GetMapping("/travel_search")
+	public String searchTravelData(String keyword, String resultId, Model model) throws ControllerException {
+		
+		try {
+			
+		    List<TravelDTO> travelData = this.service.getTravelData(keyword);
+		    model.addAttribute("travelData", travelData);
+		    model.addAttribute("resultId", resultId);
+		    return "/board/course/searchTravelData"; 
+		} catch(Exception e) {
+			throw new ControllerException(e);
+		} // try-catch
+	}
 //	// 3. 특정 게시물 상세조회
 //	@GetMapping(path={"/get", "/modify"}, params="seq")
 //	void get(@RequestParam("seq") Integer seq, Model model) throws ControllerException {

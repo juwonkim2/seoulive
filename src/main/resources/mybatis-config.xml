@@ -7,7 +7,7 @@
 <configuration>
 
     <mappers>
-    	
+    	<mapper resource="org/zerock/seoulive/board/course/persistence/CourseMapper.xml" />
     </mappers>
 
 </configuration>
