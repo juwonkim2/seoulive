@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
@@ -130,6 +131,20 @@ public class CourseController {
 			throw new ControllerException(e);
 		} // try-catch
 	}
+	
+	@PostMapping(path="/course_like")
+	void courseLike(CourseLikeDTO dto) throws ControllerException {
+		log.trace("register({}) invoked.", dto);
+		
+		try {
+			
+			this.service.courseLike(dto);
+			
+		} catch(Exception e) {
+			throw new ControllerException(e);
+		} // try-catch
+	} // register
+	
 //	// 3. 특정 게시물 상세조회
 //	@GetMapping(path={"/get", "/modify"}, params="seq")
 //	void get(@RequestParam("seq") Integer seq, Model model) throws ControllerException {

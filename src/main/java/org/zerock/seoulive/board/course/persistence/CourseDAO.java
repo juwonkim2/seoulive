@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
 import org.zerock.seoulive.board.course.domain.CourseTravelVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
@@ -40,6 +41,7 @@ public interface CourseDAO {
 			SELECT *
 			FROM tbl_course 
 			WHERE ${searchType} LIKE '%' || #{keyword} || '%'
+			ORDER BY seq DESC
 			OFFSET ( #{currPage} - 1) * #{amount} ROW
 			FETCH NEXT #{amount} ROWS ONLY
 			""")
@@ -72,6 +74,13 @@ public interface CourseDAO {
 			WHERE TITLE LIKE '%' || #{keyword} || '%'
 			""")
 	public abstract List<TravelDTO> getTravelData(String keyword);
+	
+	// 8. 게시물 찜
+	@Insert("""
+			INSERT INTO tbl_like (EMAIL, BOARD_SEQ, BOARD)
+			VALUES ('seoulive', #{BOARD_SEQ}, #{BOARD})
+			""")
+	public abstract void courseLike(CourseLikeDTO dto);
 //	
 //	// n. 특정 게시물 상세조회
 //	public abstract CourseVO select(Integer bno);

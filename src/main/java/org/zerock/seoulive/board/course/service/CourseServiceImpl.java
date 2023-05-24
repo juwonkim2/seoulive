@@ -8,6 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
 import org.zerock.seoulive.board.course.domain.CourseTravelVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
@@ -107,6 +108,20 @@ public class CourseServiceImpl
 	public List<TravelDTO> getTravelData(String keyword) throws ServiceException{
         return this.dao.getTravelData(keyword);
     } // getTravelData
+	
+	
+	// 8.
+	public void courseLike(CourseLikeDTO dto) throws ServiceException {
+		
+		try {
+			this.dao.courseLike(dto);
+
+		} catch(Exception e){
+			throw new ServiceException(e);
+		} // try-catch
+		
+	}
+	
 	
 //
 //	@Override

@@ -42,11 +42,29 @@
                 location.href = "/board/course/list?searchType="+searchType+"&keyword="+keyword+"&currPage="+seletedPageNum;
             }); // onclick
 
-
         });
+        
 
     </script>
 	
+	<style>
+		
+		.area_txt .fa-heart{
+		    float: right;
+		    font-size: 20px;
+		    cursor: pointer;
+		    
+		}
+		
+		.area_txt .fa-heart.off{
+		    color: #e6e6e6;
+		}
+		
+		.area_txt .fa-heart.on{
+		    color: #ff3333;
+		}
+		
+	</style>
 
 </head>
 
@@ -60,8 +78,13 @@
             <a href="#" class="fl">
                 <li>여행지</li>
             </a>
+            
             <a href="#" class="fl">
-                <li>일정</li>
+                <li>코스게시판</li>
+            </a>
+            
+            <a href="#" class="fl">
+                <li>리뷰게시판</li>
             </a>
 
             <a href="#" class="fl">
@@ -112,7 +135,13 @@
 	                <strong>${course.TITLE}</strong>
 	                <ul><li>${course.REVIEW}</li></ul>
 	                <span class="user_info">
-	                        <input type="checkbox" name="jjim" value="하트">
+	                		
+	                        <div class="area_txt">
+		                       <i class="fas fa-heart off">
+		                       		<input type="hidden" name="board" value="course">
+		                       		<input type="hidden" name="board_seq" value="${course.seq}">
+		                       </i>
+		                   </div>
 	                        <span class="user_img">
 	                            <img src="${pageContext.request.contextPath}/resources/img/img_profile.png" alt="${course.WRITER}">
 	                        </span>
@@ -156,6 +185,40 @@
 	    </div>
 	</div>
 	</c:forEach>
+	
+	<script>
+		$(function () {
+	    	var heartIcon = $('.area_txt .fa-heart');
+	        heartIcon.click(function() {
+	            $(this).toggleClass('on');
+	            
+	            
+	            var boardType = $(this).find('input[name="board"]').val();
+				var boardSeq = $(this).find('input[name="board_seq"]').val();
+				
+				
+				$.ajax({
+				    url: '/board/course/course_like',
+				    method: 'POST',
+				    data: {
+				      BOARD: boardType,
+				      BOARD_SEQ: boardSeq
+				    },
+				    success: function(response) {
+				    	alert("좋아요!");
+				      // 성공적으로 요청을 처리한 후 실행할 코드
+				    },
+				    error: function(xhr, status, error) {
+				    	alert("오류");
+				      // 요청 처리 중 오류가 발생한 경우 실행할 코드
+				    }
+				  });
+				
+	        })
+	        
+	    });
+	</script>
+	
 	
 </div>
 

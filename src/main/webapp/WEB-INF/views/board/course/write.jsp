@@ -442,35 +442,7 @@
 		  var review = $('input[name="REVIEW"]').val();
 		  
 		  
-		  $('.searchResult').each(function() {
-			  if ($(this).css('display') !== 'none') {
-				  var id = $(this).attr('id');
-				  var dataId = id.substring(6); // 'result' 제외한 부분 추출
-				  var travelReview = $(this).find('input[name="TRAVEL_REVIEW"]').val();
-				  var travelSEQ = $(this).find('input[name="SEQ"]').val();
-				
-				  // 개별적으로 Ajax 요청 전송
-				  $.ajax({
-				    url: '/board/course/registerTravel',
-				    method: 'POST',
-				    data: {
-				      TRAVEL_SEQ: travelSEQ,
-				      USER_REVIEW: travelReview,
-				      ID: dataId
-				    },
-				    success: function(response) {
-				      // 성공적으로 요청을 처리한 후 실행할 코드
-				    },
-				    error: function(xhr, status, error) {
-				      // 요청 처리 중 오류가 발생한 경우 실행할 코드
-				    }
-				  });
-				}
-			  
-			});
-		  
-		
-		  // AJAX 요청
+		// AJAX 요청
 		  $.ajax({
 		    url: '/board/course/register', 
 		    method: 'POST',
@@ -485,15 +457,52 @@
 		      // 요청이 성공한 경우 실행될 코드
 		      console.log('데이터 전송 성공:', response);
 		      // 여기서 필요한 추가 처리를 수행할 수 있습니다.
+		      
+		      alert("성공");
+		      
 		      window.location.href = "/board/course/list";
 		    },
 		    error: function(xhr, status, error) {
 		      // 요청이 실패한 경우 실행될 코드
 		      console.error('데이터 전송 실패:', error);
 		      // 실패 처리를 수행할 수 있습니다.
+		      alert("실패");
 		    }
 		  });
+		
+		  
+		  $('.searchResult').each(function() {
+			  if ($(this).css('display') !== 'none') {
+				  var id = $(this).attr('id');
+				  var dataId = id.substring(6); // 'result' 제외한 부분 추출
+				  var travelReview = $(this).find('input[name="TRAVEL_REVIEW"]').val();
+				  var travelSEQ = $(this).find('input[name="SEQ"]').val();
+				  alert(travelSEQ+", "+travelReview+", "+dataId)
+				  // 개별적으로 Ajax 요청 전송
+				  $.ajax({
+				    url: '/board/course/registerTravel',
+				    method: 'POST',
+				    data: {
+				      TRAVEL_SEQ: travelSEQ,
+				      USER_REVIEW: travelReview,
+				      ID: dataId
+				    },
+				    
+				    success: function(response) {
+				      // 성공적으로 요청을 처리한 후 실행할 코드
+				      alert("2차성공");
+				    },
+				    error: function(xhr, status, error) {
+				      // 요청 처리 중 오류가 발생한 경우 실행할 코드
+				      alert("2차실패");
+				    }
+				  });
+				}
+			  
+			});
 		}
+		
+		  
 		
 		
 	</script>
