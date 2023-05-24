@@ -17,4 +17,18 @@ public class courseVO {
     private Date DURATION_START; //DAY1
     private Date DURATION_END; //DAY끝
 
+
+    public courseDTO toDTO() {
+        courseDTO dto = new courseDTO();
+
+        dto.setSEQ(SEQ);
+        dto.setWRITER(WRITER);
+        dto.setTITLE(TITLE);
+        dto.setREVIEW(REVIEW);
+//        dto.setDURATION_START(DURATION_START);
+//        dto.setDURATION_END(DURATION_END);
+
+        return null;
+    }
+
 } //end class

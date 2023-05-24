@@ -10,7 +10,6 @@ import org.zerock.seoulive.board.course.domain.courseVO;
 
 import java.util.List;
 @Mapper
-@Repository
 public interface courseViewMapper {
 
 //    @Select("select * from tbl_course where seq > 0")

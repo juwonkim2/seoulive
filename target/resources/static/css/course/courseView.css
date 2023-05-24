@@ -29,14 +29,16 @@
 }
 .cover_bright{
     position: absolute;
+    width: 290px;
+    border: 1px solid black;
     float: right;
-    color: white;
-    font-size: 20px;
-    top: 80%;
-    left: 80%;
+    color: black;
+    font-size: 17px;
+    top: 81%;
+    left: 70%;
     line-height: 34px;
     padding-top: 5px;
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 30px;
 }
 .plan_title {
@@ -69,29 +71,50 @@
     left: 3%;
     line-height: 20px;
 }
+
 .title_function {
-    position: relative;
-    left: 40%;
+    position: absolute;
+    width: 300px;
+    height: 30px;
+    left: 80%;
     margin-top: 10px;
     line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+.url_setClipboard {
+    position: relative;
+    border: 1px solid salmon;
 }
 .buddyBtn {
-    padding-left: 5px;
+    float: left;
+    padding-left: 1px;
+    border: 1px solid saddlebrown;
 }
-
 #myButton {
     border: none;
+    float: left;
     background-color: white;
+    border: 1px solid seagreen;
 }
 
 /* 일정표,댓글 탭 */
 .plan_mnu_box {
     float: left;
-    width: 100%;
+    /*display: block;*/
+    /*position: relative;*/
+    width: 300px;
     height: 70px;
-    /* border-left: 1px solid #c8c8ca; */
+    /* 수정 */
+    margin-right: 300px;
+    position: relative;
+    top: 10px;
+    right:500px;
+
     background-color: white;
     padding-right: 20px;
+    /*border: 1px solid sandybrown;*/
 }
 .plan_mnu {
     display: block;
@@ -103,6 +126,7 @@
     color: black;
     float: left;
     cursor: pointer;
+    /*border: 1px solid aqua;*/
 }
 .plan_mnu_line {
     float: left;
@@ -111,9 +135,6 @@
     background-color: #b3b3b3;
     margin-top: 15px;
 }
-
-
-
 
 
 /* 본문(이후) */
@@ -152,8 +173,9 @@
 .planpage_title {
     /* 2020.03.06 */
     position: relative;
-    width: 1000px;
-    height: 10%;
+    /*border: 1px solid slateblue;*/
+    width: 800px;
+    height: 15%;
     left: 200px;
     font-size: 1.5rem;
     padding-left: 3px;
@@ -193,19 +215,28 @@
 
 .planpage_course1txt {
     position: relative;
+    border: 1px solid slateblue;
     font-size: 1.5rem;
     width: 250px;
     height: 50px;
     top: 15%;
     left: 2%;
 }
+
 .planpage_course1review {
     position: relative;
-    width: 500px;
-    height: 50px;
+    border: 1px solid black;
+    width: 310px;
+    height: 80px;
     left: 48%;
+    font-size: 15px;
     padding-right: 10%;
-    top: 20%;
+    bottom: 10px;
+    text-align: left; /* 왼쪽 정렬 추가 */
+    padding-left: 2px;
+    padding-top: 2px;
+    overflow: hidden; /* 내용이 넘칠 경우 감춤 */
+    text-overflow: ellipsis; /* 내용이 넘칠 경우 말줄임표 (...) 표시 */
 
 }
 
@@ -214,9 +245,10 @@
 /* 맵 */
 .map {
     display: block;
-    width: 100%;
+    border: 1px solid saddlebrown;
+    width: 1200px;
     height: 500px;
-    margin-top: 20px;
+    margin-top: 500px;
 }
 .map img {
     width: 100%;
@@ -245,28 +277,18 @@
 .comm_write {
     width: 1200px;
     height: 100px;
+
 }
 .comm_writecontent {
-    position: relative;
-    width: 1200px;
-    height: 100px;
-    border-bottom: 1px solid black;
-    font-size: 15px;
-    line-height: 50px;
-    padding-left: 10px;
+    position: absolute;
 }
-.comm_rigs {
+.comm_rigitbutton {
     position: relative;
-    width: 100px;
-    height: 50px;
-    bottom: 80%;
+    top: 20px;
     left: 90%;
-    border: 1px solid black;
     border-radius: 8%;
     text-align: center;
     justify-content: center;
-    line-height: 50px;
-    cursor: pointer;
 }
 .comments {
 
@@ -327,45 +349,40 @@
 }
 
 
-/* 푸터 */
-
-/* quickLink */
-aside .quick_box{
-    position:fixed;
-    top:50%;
-    right:0;
-    z-index:30;
-    width:80px;
-    background-color:#fff;
-    transform:translateY(-50%);
-}
-aside .quick_box p{
-    padding:10px;
-    background:#e76649;
-    font-size:16px;
-    line-height:21px;
-    color:#fff;
-    text-align:center;
-}
-aside .quick_box ul li{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    height:80px;
-    border:1px solid #ccc;
-    border-bottom:none;
-}
-aside .quick_box ul li:last-of-type{
-    border-bottom:1px solid #ccc;
-}
-aside .quick_box ul li.top,
-aside .quick_box ul li.bottom{
-    height:30px;
-}
-aside .quick_box ul li a i{
-    font-size:20px;
+.getContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
 }
 
+.boardList,
+.viewModify{
+    flex: 1;
+    width: 20px;
+    height: 50px;
+
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+
+    border: none;
+    background: white;
+}
+
+.boardList {
+    color: #49539E;
+
+}
+
+.viewModify{
+    margin-left: 10px;
+    color: #e76649;
+}
 
 /*  */
 #container{margin:0 auto;max-width:1200px;}

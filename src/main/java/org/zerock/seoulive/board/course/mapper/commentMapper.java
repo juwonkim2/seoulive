@@ -1,18 +1,25 @@
 package org.zerock.seoulive.board.course.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-import org.zerock.seoulive.board.course.domain.commDTO;
+import org.apache.ibatis.annotations.Param;
+import org.zerock.seoulive.board.course.domain.Criteria;
 import org.zerock.seoulive.board.course.domain.commVO;
 
-@Mapper
-@Repository
-public interface commentMapper {
-    public int commInsert(commVO vo);
+import java.util.List;
 
-    public commVO commRead(Integer seq); //특정 댓글 읽기
+@Mapper
+public interface commentMapper {
+
+    public Integer commRegit(commVO vo);
+    public List<commVO> commList(Integer seq); //목록
+    public Integer commTotal(Integer seq); //개수
 
     public Integer commDelete(Integer seq);
 
-    public Integer commUpdate(commDTO content);
+    public Integer commUpdate(commVO content);
+
+    public List<commVO> getListWithPaging(
+            @Param("cri") Criteria cri,
+            @Param("board_name") String board_name
+    );
 }

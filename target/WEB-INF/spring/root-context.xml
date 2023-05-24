@@ -44,7 +44,6 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
 	</bean>
 
-	<mybatis-spring:scan base-package="org.zerock.seoulive.controller" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.course.mapper" />
 
 	<!-- ================= Start Of AOP ================== -->

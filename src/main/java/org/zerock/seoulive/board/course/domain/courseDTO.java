@@ -16,4 +16,29 @@ public class courseDTO {
     private Date MODIFY_DATE; //수정일
     private Date DURATION_START; //DAY1
     private Date DURATION_END; //DAY끝
+
+    public Integer getSeq() {
+        return SEQ;
+    }
+    public String getWriter() {
+        return WRITER;
+    }
+    public String getTitle() {
+        return TITLE;
+    }
+    public String getReview() {
+        return REVIEW;
+    }
+    public Date getDuration_start() {
+        return DURATION_START;
+    }
+    public void setDuration_start(Date duration_start) {
+        this.DURATION_START = duration_start;
+    }
+    public Date getDuration_end() {
+        return DURATION_END;
+    }
+    public void setDuration_end(Date duration_end) {
+        this.DURATION_END = duration_end;
+    }
 } //end class

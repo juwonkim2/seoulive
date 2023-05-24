@@ -24,13 +24,13 @@
 
     <update id="update">
         update tbl_course
-        set writer = #{writer},
-        title = #{title},
-        review = #{review},
-        duration_start = #{duration_start},
-        duration_end = #{duration_end},
+        set writer = #{writer, jdbcType=VARCHAR},
+        title = #{title,jdbcType=VARCHAR},
+        review = #{review,jdbcType=VARCHAR},
+        duration_start = #{duration_start,jdbcType=DATE},
+        duration_end = #{duration_end,jdbcType=DATE},
         modify_date = sysdate
-        where seq = #{seq}
+        where seq = #{seq, jdbcType=INTEGER}
     </update>
 
 
