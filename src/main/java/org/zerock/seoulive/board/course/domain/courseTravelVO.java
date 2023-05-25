@@ -1,13 +1,21 @@
 package org.zerock.seoulive.board.course.domain;
 
+
 import lombok.Value;
 
 @Value
-public class courseTravelVO {
-    private Integer SEQ; //tbl_course_travel의 번호
-    private Integer BOARD_SEQ; //tbl_course의 번호
-    private Integer TRAVEL_SEQ; //tbl_travel 번호
-    private Integer UPLOAD_SEQ; //첨부파일 번호
-    private String LINK; //첨부파일 경로
-    private String USER_REVIEW; //여행지 당 리뷰
-} //end class
+public class CourseTravelVO {
+    private Integer SEQ;
+    private Integer BOARD_SEQ;
+    private Integer TRAVEL_SEQ;
+    private Integer UPLOAD_SEQ;
+    private String LINK;
+    private String USER_REVIEW;
+//    private String ID;
+    
+    private String CATEGORY;
+    private String TITLE;
+    private String CONTENT;
+    private String ADDRESS;
+
+} // end class

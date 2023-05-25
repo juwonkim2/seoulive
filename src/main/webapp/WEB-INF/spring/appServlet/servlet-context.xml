@@ -26,8 +26,10 @@
 		<jsp prefix="/WEB-INF/views/" suffix=".jsp"/>
 	</view-resolvers>
 	
-	
+
 	<context:component-scan base-package="org.zerock.seoulive.board.course.controller"/>
 <!--	<context:component-scan base-package="org.zerock.seoulive.board.course.interceptor" />-->
+	<context:component-scan base-package="org.zerock.myapp.controller" />
+	<context:component-scan base-package="org.zerock.seoulive.board.course.controller" />
 
 </beans:beans>

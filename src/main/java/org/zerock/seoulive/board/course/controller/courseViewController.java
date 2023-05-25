@@ -40,7 +40,7 @@ public class courseViewController {
         log.info("list({}) invoked >>>", model);
 
         try{
-            List<courseVO> list = this.service.getList();
+            List<CourseVO> list = this.service.getList();
             model.addAttribute("__LIST__", list);
 
             return "/board/course/list";
@@ -59,8 +59,8 @@ public class courseViewController {
 
        try {
 
-               List<courseVO> vo = this.service.get(seq);
-               List<courseTravelVO> tr_vo = this.service.courseTravelGetList(seq);
+               List<CourseVO> vo = this.service.get(seq);
+               List<CourseTravelVO> tr_vo = this.service.courseTravelGetList(seq);
 
                Integer total = commservice.getTotal(seq);
                log.info("댓글 갯수: {}", total);
@@ -80,7 +80,7 @@ public class courseViewController {
     //수정하기
     @PostMapping (path = "/modify", params = {"seq"})
     public String modify(@RequestParam(value="seq") Integer seq,
-                       courseDTO dto,courseTravelDTO coursedto,
+                       CourseDTO dto,CourseTravelDTO coursedto,
                        Integer currPage,RedirectAttributes rttrs) throws Exception {
         log.trace("modify({}) invoked", dto);
 

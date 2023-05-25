@@ -16,15 +16,15 @@ public interface courseViewService {
     //댓글 개수 반환
 
 
-    public abstract List<courseVO> get(Integer seq) throws ServiceException;
-    public abstract boolean modify(courseDTO course) throws ServiceException;
+    public abstract List<CourseVO> get(Integer seq) throws ServiceException;
+    public abstract boolean modify(CourseDTO course) throws ServiceException;
     public abstract boolean remove(Integer seq) throws ServiceException;
-    public abstract List<courseVO> getList() throws ServiceException; //전체목록
+    public abstract List<CourseVO> getList() throws ServiceException; //전체목록
 
 //    ================== course_travel ===============
 
-    public abstract List<courseTravelVO> courseTravelGetList(Integer seq) throws ServiceException;
-    public abstract boolean modifyCoTravel(courseTravelDTO courseTravel) throws ServiceException;
+    public abstract List<CourseTravelVO> courseTravelGetList(Integer seq) throws ServiceException;
+    public abstract boolean modifyCoTravel(CourseTravelDTO courseTravel) throws ServiceException;
     public abstract boolean removeCoTravel(Integer seq) throws ServiceException;
 
 

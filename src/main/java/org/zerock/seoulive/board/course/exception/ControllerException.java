@@ -1,3 +1,4 @@
+
 package org.zerock.seoulive.board.course.exception;
 
 
@@ -23,5 +24,6 @@ public class ControllerException extends Exception {
 		
 	}//default Constructor
 	
-	
-}//end class
+
+} // end class
+

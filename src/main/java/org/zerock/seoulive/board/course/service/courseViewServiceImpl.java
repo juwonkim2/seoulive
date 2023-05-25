@@ -30,9 +30,68 @@ public class courseViewServiceImpl implements courseViewService{
     @Setter(onMethod_ = @Autowired )
     private courseViewMapper mapper;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //상세조회
     @Override
-    public List<courseVO> get(Integer seq) throws ServiceException {
+    public List<CourseVO> get(Integer seq) throws ServiceException {
         log.trace("get() invoked");
 
         return mapper.read(seq);
@@ -40,7 +99,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //수정하기
     @Override
-    public boolean modify(courseDTO course) throws ServiceException {
+    public boolean modify(CourseDTO course) throws ServiceException {
         log.trace("modify() invoked");
 
         return mapper.update(course) ==1;
@@ -56,7 +115,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //list 전체 반환
     @Override
-    public List<courseVO> getList() throws ServiceException {
+    public List<CourseVO> getList() throws ServiceException {
         log.trace("getList() invoked");
 
         return mapper.getList();
@@ -67,7 +126,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //write에서 반환한 여행지 목록 가져오기
     @Override
-    public List<courseTravelVO> courseTravelGetList(Integer seq) throws ServiceException {
+    public List<CourseTravelVO> courseTravelGetList(Integer seq) throws ServiceException {
         log.trace("getCourseTravelList() invoked");
 
         return mapper.courseTravelGetList(seq);
@@ -75,7 +134,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //여행지 목록 수정
     @Override
-    public boolean modifyCoTravel(courseTravelDTO courseTravel) throws ServiceException {
+    public boolean modifyCoTravel(CourseTravelDTO courseTravel) throws ServiceException {
         log.trace("modifyCoTravel() invoked");
 
         return mapper.CourseTravelUpdate(courseTravel) ==1;

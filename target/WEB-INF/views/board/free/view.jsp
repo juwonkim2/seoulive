@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,3 +103,21 @@
 
 
 </html>
+=======
+<%--
+  Created by IntelliJ IDEA.
+  User: leedongyoung
+  Date: 2023/05/10
+  Time: 8:03 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+>>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
