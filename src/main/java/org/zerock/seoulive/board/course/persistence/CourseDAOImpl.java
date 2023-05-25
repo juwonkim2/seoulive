@@ -6,11 +6,10 @@
 //
 //import org.apache.ibatis.annotations.Param;
 //import org.apache.ibatis.session.SqlSession;
+//import org.apache.ibatis.session.SqlSessionFactory;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Repository;
-//import org.zerock.seoulive.board.course.domain.CourseDTO;
-//import org.zerock.seoulive.board.course.domain.CoursePageTO;
-//import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+//import org.zerock.seoulive.board.course.domain.*;
 //import org.zerock.seoulive.board.travel.domain.TravelDTO;
 //
 //import lombok.AllArgsConstructor;
@@ -21,57 +20,64 @@
 //
 //@Repository("courseDAO")
 //public class CourseDAOImpl implements CourseDAO {
-//	
+//
 //	@Autowired
-//	private SqlSession sqlSession;
-//
-//	@Override
-//	public List<CourseDTO> courseList(CoursePageTO page) {
-//		return sqlSession.selectList("courseList", page);
-//	} // courseList
-//
-//	@Override
-//	public int getTotalAmount() {
-//		return sqlSession.selectOne("getTotalAmount");
-//	} // getTotalAmount
+//	private SqlSessionFactory sqlSession;
 //
 //	@Override
 //	public List<CourseTravelVO> selectTravelList(CourseDTO dto) {
-//		return sqlSession.selectList("selectTravelList", dto);
-//	} // selectTravelList
+//
+//		return null;
+//	}
 //
 //	@Override
-//	public List<CourseDTO> searchCourse(Integer currPage, Integer amount, String searchType, String keyword) {
-//		log.trace("searchCourse() invoked.");
-//		
-//		Map<String, Object> paramMap = new HashMap<>();
-//		paramMap.put("currPage", currPage);
-//		paramMap.put("amount", amount);
-//		paramMap.put("category", searchType);
-//        paramMap.put("keyword", keyword);
-//        log.info(paramMap);
-//        
-//        return sqlSession.selectList("searchCourse", paramMap);
-//	} // searchCourse
+//	public List<CourseTravelVO> selectTravelList2(Integer seq) {
+//		return null;
+//	}
+//
+//	@Override
+//	public List<CourseDTO> searchCourse(CoursePageTO page) {
+//		return null;
+//	}
 //
 //	@Override
 //	public int getTotalSearch(String searchType, String keyword) {
-//
-//		Map<String, Object> paramMap = new HashMap<>();
-//		paramMap.put("category", searchType);
-//        paramMap.put("keyword", keyword);
-//		return sqlSession.selectOne("getTotalSearch", paramMap);
-//	} // getTotalSearch
+//		return 0;
+//	}
 //
 //	@Override
-//	public Integer insertCourse(CourseDTO dto) {
-//		
-//		return sqlSession.insert("insertCourse", dto);
-//	} // insertCourse
-//	
-//	@Override
-//	public List<TravelDTO> getTravelData(@Param("keyword")String keyword) {
-//        return sqlSession.selectList("getTravelData", keyword);
-//    } // getTravelData
+//	public void insertCourse(CourseWriteDTO dto) {
 //
+//	}
+//
+//	@Override
+//	public void insertCourseTravel(CourseWriteVO vo) {
+//
+//	}
+//
+//	@Override
+//	public List<TravelDTO> getTravelData(String keyword) {
+//		return null;
+//	}
+//
+//	@Override
+//	public void courseLike(CourseLikeDTO dto) {
+//
+//	}
+//
+//	@Override
+//	public CourseVO read(Integer seq) {
+//		return null;
+//	}
+//
+//
+//	@Override
+//	public List<CourseCommVO> commList(Integer seq) {
+//		return null;
+//	}
+//
+//	@Override
+//	public void commRegister(String content, Integer seq) {
+//
+//	}
 //} // end class

@@ -2,15 +2,9 @@
 
 
 <project
-<<<<<<< HEAD
 		xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
-=======
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -27,11 +21,7 @@
 
 	<properties>
 		<java-version>17</java-version>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<org.springframework-version>5.3.26</org.springframework-version>
 		<org.aspectj-version>1.9.19</org.aspectj-version>
 		<org.apache.logging.log4j-version>2.20.0</org.apache.logging.log4j-version>
@@ -41,7 +31,6 @@
 
 	<dependencies>
 
-<<<<<<< HEAD
 		<!-- =============== Logging =============== -->
 
 		<dependency>
@@ -60,37 +49,13 @@
 
 		<!-- ============= Servlet/JSP ============= -->
 
-=======
-        <!-- =============== Logging =============== -->
-
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${org.apache.logging.log4j-version}</version>
-        </dependency>
-
-        <!-- For Spring framework, HikariCP, DriverSpy logging -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${org.apache.logging.log4j-version}</version>
-        </dependency>
-
-
-        <!-- ============= Servlet/JSP ============= -->
-			
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
@@ -105,13 +70,8 @@
 		</dependency>
 
 
-<<<<<<< HEAD
 		<!-- =============== AspectJ =============== -->
 
-=======
-        <!-- =============== AspectJ =============== -->
-				
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -125,11 +85,7 @@
 		</dependency>
 
 
-<<<<<<< HEAD
 		<!-- ================ Spring =============== -->
-=======
-        <!-- ================ Spring =============== -->
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -149,144 +105,87 @@
 			<version>${org.springframework-version}</version>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${org.springframework-version}</version>
-<<<<<<< HEAD
 		</dependency>
-=======
-		</dependency>		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-<<<<<<< HEAD
 
 		<!-- =============== JDBC =============== -->
-=======
-		
-        <!-- =============== JDBC =============== -->
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 		<dependency>
 			<groupId>org.bgee.log4jdbc-log4j2</groupId>
 			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
 			<version>1.16</version>
 		</dependency>
-<<<<<<< HEAD
 
-=======
-		  
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8-production</artifactId>
 			<version>23.2.0.0</version>
-<<<<<<< HEAD
 
 			<type>pom</type>
 
-=======
-		
-			<type>pom</type>
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 			<exclusions>
 				<exclusion>
 					<groupId>com.oracle.database.ha</groupId>
 					<artifactId>simplefan</artifactId>
 				</exclusion>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 				<exclusion>
 					<groupId>com.oracle.database.ha</groupId>
 					<artifactId>ons</artifactId>
 				</exclusion>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 				<exclusion>
 					<groupId>com.oracle.database.jdbc</groupId>
 					<artifactId>rsi</artifactId>
 				</exclusion>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 				<exclusion>
 					<groupId>com.oracle.database.jdbc</groupId>
 					<artifactId>ucp</artifactId>
 				</exclusion>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 				<exclusion>
 					<groupId>com.oracle.database.xml</groupId>
 					<artifactId>xdb</artifactId>
 				</exclusion>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 				<exclusion>
 					<groupId>com.oracle.database.xml</groupId>
 					<artifactId>xmlparserv2</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
-<<<<<<< HEAD
 
 		<!-- =============== DataSource =============== -->
-=======
-	
-        <!-- =============== DataSource =============== -->
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 			<version>5.0.1</version>
 		</dependency>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.5.13</version>
 		</dependency>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>3.0.1</version>
 		</dependency>
 
-<<<<<<< HEAD
 		<!-- =============== Testing =============== -->
 
 		<!-- <dependency>
@@ -296,17 +195,6 @@
            <scope>test</scope>
         </dependency> -->
 
-=======
-        <!-- =============== Testing =============== -->
-
-		<!-- <dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency> -->
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -322,11 +210,7 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson-version}</version>
 		</dependency>
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
@@ -340,22 +224,14 @@
 		</dependency>
 
 
-<<<<<<< HEAD
 		<!-- ================ Misc ================= -->
-=======
-        <!-- ================ Misc ================= -->
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -368,7 +244,6 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.5</version>
 		</dependency>
-<<<<<<< HEAD
 
 	</dependencies>
 
@@ -386,30 +261,10 @@
 			</plugin>
 
 			<plugin>
-=======
-		     
-	</dependencies>
-
-
-    <build>
-
-		<finalName>/</finalName>
-
-        <plugins>
-
-            <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.2</version>
-            </plugin>
-
-            <plugin>
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
 				<version>2.10</version>
 
-<<<<<<< HEAD
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>false</downloadJavadocs>
@@ -420,34 +275,14 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
-=======
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>false</downloadJavadocs>
-                </configuration>
-            </plugin>
-
-            <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 				<configuration>
 					<release>${java-version}</release>
 				</configuration>
-<<<<<<< HEAD
 			</plugin>
 
 		</plugins>
 
 	</build>
-=======
-            </plugin>
-
-        </plugins>
-
-    </build>
->>>>>>> a6cfb93d789f624cbf063405afb9eebabb5db273
 
 </project>

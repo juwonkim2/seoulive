@@ -23,7 +23,7 @@ public interface courseViewService {
 
 //    ================== course_travel ===============
 
-    public abstract List<CourseTravelVO> courseTravelGetList(Integer seq) throws ServiceException;
+    public abstract List<CourseTravelVO> getTravelList(Integer seq) throws ServiceException;
     public abstract boolean modifyCoTravel(CourseTravelDTO courseTravel) throws ServiceException;
     public abstract boolean removeCoTravel(Integer seq) throws ServiceException;
 

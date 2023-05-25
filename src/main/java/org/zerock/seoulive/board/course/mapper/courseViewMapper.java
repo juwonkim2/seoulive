@@ -23,7 +23,7 @@ public interface courseViewMapper {
 
 //    =============== course_travel ===================
 
-    public List<CourseTravelVO> courseTravelGetList(Integer seq);
+    public List<CourseTravelVO> getTravelList(Integer seq);
 
     public Integer courseTravelDelete(Integer seq);
 

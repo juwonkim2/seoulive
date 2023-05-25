@@ -31,64 +31,6 @@ public class courseViewServiceImpl implements courseViewService{
     private courseViewMapper mapper;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //상세조회
     @Override
     public List<CourseVO> get(Integer seq) throws ServiceException {
@@ -126,10 +68,10 @@ public class courseViewServiceImpl implements courseViewService{
 
     //write에서 반환한 여행지 목록 가져오기
     @Override
-    public List<CourseTravelVO> courseTravelGetList(Integer seq) throws ServiceException {
+    public List<CourseTravelVO> getTravelList(Integer seq) throws ServiceException {
         log.trace("getCourseTravelList() invoked");
 
-        return mapper.courseTravelGetList(seq);
+        return mapper.getTravelList(seq);
     }
 
     //여행지 목록 수정
