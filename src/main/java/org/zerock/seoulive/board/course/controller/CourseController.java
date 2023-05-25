@@ -8,10 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
+import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ControllerException;
@@ -90,6 +93,7 @@ public class CourseController {
 			
 			return "redirect:/board/course/list";
 		} catch(Exception e) {
+			e.getStackTrace();
 			throw new ControllerException(e);
 		} // try-catch
 	} // register
@@ -132,8 +136,8 @@ public class CourseController {
 		} // try-catch
 	}
 	
-	@PostMapping(path="/course_like")
-	void courseLike(CourseLikeDTO dto) throws ControllerException {
+	@PostMapping("/course_like")
+	public void courseLike(CourseLikeDTO dto) throws ControllerException {
 		log.trace("register({}) invoked.", dto);
 		
 		try {
@@ -145,39 +149,67 @@ public class CourseController {
 		} // try-catch
 	} // register
 	
-//	// 3. 특정 게시물 상세조회
-//	@GetMapping(path={"/get", "/modify"}, params="seq")
-//	void get(@RequestParam("seq") Integer seq, Model model) throws ControllerException {
-//		log.trace("get() invoked.");
-//		
-//		try {
-//			CourseVO vo = this.service.get(seq);
-//			
-//			model.addAttribute("__BOARD__", vo);
-//		} catch(Exception e) {
-//			throw new ControllerException(e);
-//		} // try-catch
-//	} // get
-//	
-//	
-//	// 4. 특정 게시물 업데이트(UPDATE)
-//	@PostMapping(path="/modify")
-//	String modify(CourseDTO dto, RedirectAttributes rttrs) throws ControllerException {
-//		log.trace("modify({}) invoked.", dto);
-//		
-//		try {
-//			Objects.requireNonNull(dto);
-//			
-//			if(this.service.modify(dto)) {
-//				rttrs.addAttribute("result", "true");
-//				rttrs.addAttribute("bno", dto.getSeq());
-//			} // if
-//			
-//			return "redirect:/board/course/list";
-//		} catch(Exception e) {
-//			throw new ControllerException(e);
-//		} // try-catch
-//	} // modify
+	//상세조회
+    @GetMapping(path ={ "/get", "/modify"}, params = {"seq"})
+    public void get(Integer seq, Model model) throws ControllerException {
+       log.trace("get() invoked");
+
+       try {
+
+               CourseVO vo = this.service.get(seq);
+               List<CourseTravelVO> travelList = this.service.getTravelList(seq);
+               List<CourseCommVO> commList = this.service.commList(seq);
+//               Integer total = commservice.getTotal(seq);
+//               log.info("댓글 갯수: {}", total);
+
+               model.addAttribute("__BOARD__", vo);
+               model.addAttribute("__COURSETRAVELBOARD__", travelList);
+               model.addAttribute("__COMMENT_LIST__", commList);
+//               model.addAttribute("__COMMENT_TOTAL__",total);
+
+       } catch (Exception e) {
+    	   e.getStackTrace();
+           throw new ControllerException(e);
+       }
+    } // get
+	
+    @PostMapping("/comm_write")
+    public String commRegister(String content, Integer seq) throws ControllerException {
+		log.trace("commRegister({}) invoked.", content);
+				
+		try {
+			
+			this.service.commRegister(content, seq);
+			
+			return "redirect:/board/course/get?seq="+seq;
+		} catch(Exception e) {
+			throw new ControllerException(e);
+		} // try-catch
+    } // commRegister
+	
+  //수정하기
+//    @PostMapping (path = "/modify", params = {"seq"})
+//    public String modify(@RequestParam(value="seq") Integer seq,
+//                       courseDTO dto,courseTravelDTO coursedto,
+//                       Integer currPage,RedirectAttributes rttrs) throws ControllerException {
+//        log.trace("modify({}) invoked", dto);
+//
+//
+//        try {
+//            Objects.requireNonNull(dto);
+//            assert coursedto != null;
+//
+//            rttrs.addAttribute("currPage", currPage);
+//
+//            if (this.service.modify(dto)) {
+//                rttrs.addAttribute("result", "success");
+//                rttrs.addAttribute("seq", dto.getSeq());
+//                }
+//            return "redirect:/course/list";
+//        } catch (Exception e) {
+//            throw new ControllerException(e);
+//        }
+//    }
 //	
 ////	@GetMapping(path="/modify", params="bno")
 ////	void modify(Integer bno, Model model) {	// 단순 수정화면 요청
@@ -187,20 +219,21 @@ public class CourseController {
 //	
 //	
 //	// 5. 특정 게시물 삭제(DELETE)
-//	@PostMapping(path="/remove")
-//	String remove(@RequestParam("seq") Integer seq, RedirectAttributes rttrs) throws ControllerException {
-//		log.trace("remove({}) invoked.", seq);
-//		
-//		try {
-//			if(this.service.remove(seq)) {
-//				rttrs.addAttribute("result", "true");
-//				rttrs.addAttribute("seq", seq);
-//			} // if
-//			
-//			return "redirect:/board/course/list";
-//		} catch(Exception e) {
-//			throw new ControllerException(e);
-//		} // try-catch
-//	} // remove
+//    @PostMapping("/remove")
+//    public String remove(@RequestParam("seq")
+//                             Integer currPage, Integer seq, RedirectAttributes rttrs) throws ControllerException {
+//        log.trace("remove({}) inovked", seq);
+//
+//        try{
+//            if(this.service.remove(seq)) {
+//                rttrs.addAttribute("currPage", currPage);
+//                rttrs.addAttribute("result", "success");
+//                rttrs.addAttribute("seq", seq);
+//            }
+//            return "redirect:/board/course/list";
+//        } catch (Exception e) {
+//            throw new ControllerException(e);
+//        }
+//    }
 	
 } // end class

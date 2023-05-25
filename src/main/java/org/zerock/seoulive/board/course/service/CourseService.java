@@ -2,10 +2,12 @@ package org.zerock.seoulive.board.course.service;
 
 import java.util.List;
 
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
 import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
@@ -21,6 +23,7 @@ public interface CourseService {
 	
 	// 3. 코스게시물이 가지고 있는 여행지 목록 반환
 	public abstract List<CourseTravelVO> getTravelList(CourseDTO dto) throws ServiceException;
+	public abstract List<CourseTravelVO> getTravelList(Integer seq) throws ServiceException;
 	
 	// 4. 게시판 검색 목록
 	public abstract List<CourseDTO> searchCourse(CoursePageTO page);
@@ -38,14 +41,20 @@ public interface CourseService {
 	// 8. 찜 기능
 	public abstract void courseLike(CourseLikeDTO dto) throws ServiceException;
 	
-//	// n. 특정 게시물 상세조회 (READ)
-//	public abstract CourseVO get(Integer bno) throws ServiceException;
-
+	// 9. 특정 게시물 상세조회 (READ)
+	public abstract CourseVO get(Integer seq) throws ServiceException;
+	
+	// 10. 상세조회 시 댓글 가져오기
+	public abstract List<CourseCommVO> commList(Integer seq) throws ServiceException;
+	
+	// 11. 댓글 작성하기
+	public abstract void commRegister(String content, Integer seq) throws ServiceException;
+	 
 //	// n. 특정 게시물 업데이트 (UPDATE)
-//		public abstract Boolean modify(CourseDTO dto) throws ServiceException;
+//		public abstract boolean modify(courseDTO course) throws ServiceException;
 
 //	// n. 특정 게시물 삭제 (DELETE)
-//	public abstract Boolean remove(Integer bno) throws ServiceException;
+//	public abstract boolean remove(Integer seq) throws ServiceException;
 	
 
 

@@ -131,7 +131,7 @@
 	    
 	        <img src="${pageContext.request.contextPath}/resources/img/seoul_forest.png" alt="" class="top_img">
 	        <div class="course_top">
-	            <a href="#">
+	            <a href="/board/course/get?seq=${course.seq}">
 	                <strong>${course.TITLE}</strong>
 	                <ul><li>${course.REVIEW}</li></ul>
 	                <span class="user_info">

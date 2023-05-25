@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
 import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
@@ -35,6 +37,13 @@ public interface CourseDAO {
 			WHERE BOARD_SEQ = ${seq}
 			""")
 	public abstract List<CourseTravelVO> selectTravelList(CourseDTO dto);
+	@Select("""
+			SELECT ct.*, tt.CATEGORY, tt.TITLE, tt.CONTENT, tt.ADDRESS
+			FROM TBL_COURSE_TRAVEL ct JOIN TBL_TRAVEL tt 
+				ON ct.TRAVEL_SEQ = tt.seq
+			WHERE BOARD_SEQ = ${seq}
+			""")
+	public abstract List<CourseTravelVO> selectTravelList2(Integer seq);
 	
 	// 4. 검색 결과 리스트
 	@Select("""
@@ -62,8 +71,8 @@ public interface CourseDAO {
 			""")
 	public abstract void insertCourse(CourseWriteDTO dto);
 	@Insert("""
-			INSERT INTO tbl_course_travel (TRAVEL_SEQ, USER_REVIEW)
-			VALUES (#{TRAVEL_SEQ}, #{USER_REVIEW})
+			INSERT INTO tbl_course_travel (BOARD_SEQ, TRAVEL_SEQ, USER_REVIEW)
+			VALUES (COURSE_SEQ.CURRVAL, #{TRAVEL_SEQ}, #{USER_REVIEW})
 			""")
 	public abstract void insertCourseTravel(CourseWriteVO vo);
 	
@@ -81,18 +90,32 @@ public interface CourseDAO {
 			VALUES ('seoulive', #{BOARD_SEQ}, #{BOARD})
 			""")
 	public abstract void courseLike(CourseLikeDTO dto);
-//	
-//	// n. 특정 게시물 상세조회
-//	public abstract CourseVO select(Integer bno);
-//	
+		
+	// 9. 특정 게시물 상세조회
+	public CourseVO read(Integer seq);
+	
+	// 10. 댓글 가져오기
+	@Select("""
+			SELECT writer, content, write_date
+	        FROM tbl_comment
+	        WHERE post_seq = #{seq}
+	          AND board_name = 'course'
+			""")
+	public abstract List<CourseCommVO> commList(Integer seq);
+	
+	@Insert("""
+			INSERT INTO tbl_comment (CONTENT, BOARD_NAME, POST_SEQ, WRITER)
+			VALUES (#{content}, 'course', #{seq}, 'NICKNAME')
+			""")
+	public abstract void commRegister(String content, Integer seq);
+	
+	
+	
 //	// n. 특정 게시물 삭제
-//	public abstract Integer delete(Integer bno);
+//	public Integer delete(Integer seq);
 //	
 //	// n. 특정 게시물 업데이트(갱신)
-//	public abstract Integer update(CourseDTO dto);
-	
-
-	
+//	public Integer update(courseDTO course);
 
 	
 } // end interface

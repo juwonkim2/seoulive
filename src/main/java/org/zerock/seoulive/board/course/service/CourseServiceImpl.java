@@ -7,10 +7,12 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
 import org.zerock.seoulive.board.course.domain.CourseTravelVO;
+import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
@@ -62,6 +64,12 @@ public class CourseServiceImpl
 		log.trace("getTravelList() invoked.");
 		
 		return this.dao.selectTravelList(dto);
+	}
+	@Override
+	public List<CourseTravelVO> getTravelList(Integer seq) throws ServiceException {
+		log.trace("getTravelList() invoked.");
+		
+		return this.dao.selectTravelList2(seq);
 	}
 		
 	// 4. 검색 후 리스트 반환
@@ -123,35 +131,60 @@ public class CourseServiceImpl
 	}
 	
 	
-//
+	// 9. 
+	@Override
+    public CourseVO get(Integer seq) throws ServiceException {
+        log.trace("get() invoked");
+        try {
+        	return this.dao.read(seq);
+        } catch(Exception e){
+			throw new ServiceException(e);
+		} // try-catch	
+    } // get
+	
+	// 10. 댓글 리스트
+	@Override
+	public List<CourseCommVO> commList(Integer seq) throws ServiceException {
+		log.trace("commList() invoked");
+		
+        try {
+        	return this.dao.commList(seq);
+        } catch(Exception e){
+			throw new ServiceException(e);
+		} // try-catch
+	} // commList
+	
+	// 11. 댓글 작성
+	@Override
+	public void commRegister(String content, Integer seq) throws ServiceException {
+	log.trace("commRegister() invoked");
+		
+        try {
+        	this.dao.commRegister(content, seq);
+        } catch(Exception e){
+			throw new ServiceException(e);
+		} // try-catch
+	} // commRegister
+
 //	@Override
-//	public CourseVO get(Integer bno) throws ServiceException {
-//		log.trace("get() invoked.");
-//		
-//		try {
-//			return this.dao.select(bno);
-//		} catch(Exception e){
-//			throw new ServiceException(e);
-//		} // try-catch
-//	} // get
-//
-//	@Override
-//	public Boolean modify(CourseDTO dto) throws ServiceException {
+//	public boolean modify(courseDTO course) throws ServiceException {
 //		log.trace("modify() invoked.");
 //		
 //		try {
-//			return ( this.dao.update(dto) == 1 );
+//			return mapper.update(course) ==1;
 //		} catch(Exception e){
 //			throw new ServiceException(e);
 //		} // try-catch
 //	} // modify	
+	
+
 //	
 //	@Override
-//	public Boolean remove(Integer bno) throws ServiceException {
+//	public boolean remove(Integer seq) throws ServiceException {
 //		log.trace("remove() invoked.");
 //		
 //		try {
-//			return ( this.dao.delete(bno) == 1 );
+//			return mapper.delete(seq) ==1;
 //		} catch(Exception e){
 //			throw new ServiceException(e);
 //		} // try-catch
