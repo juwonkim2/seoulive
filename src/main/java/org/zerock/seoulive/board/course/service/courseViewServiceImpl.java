@@ -32,7 +32,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //상세조회
     @Override
-    public courseVO get(Integer seq) throws ServiceException {
+    public List<courseVO> get(Integer seq) throws ServiceException {
         log.trace("get() invoked");
 
         return mapper.read(seq);

@@ -59,7 +59,7 @@ public class courseViewController {
 
        try {
 
-               courseVO vo = this.service.get(seq);
+               List<courseVO> vo = this.service.get(seq);
                List<courseTravelVO> tr_vo = this.service.courseTravelGetList(seq);
 
                Integer total = commservice.getTotal(seq);

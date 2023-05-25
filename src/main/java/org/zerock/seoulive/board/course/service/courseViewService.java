@@ -16,7 +16,7 @@ public interface courseViewService {
     //댓글 개수 반환
 
 
-    public abstract courseVO get(Integer seq) throws ServiceException;
+    public abstract List<courseVO> get(Integer seq) throws ServiceException;
     public abstract boolean modify(courseDTO course) throws ServiceException;
     public abstract boolean remove(Integer seq) throws ServiceException;
     public abstract List<courseVO> getList() throws ServiceException; //전체목록

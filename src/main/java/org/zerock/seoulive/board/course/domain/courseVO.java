@@ -28,7 +28,7 @@ public class courseVO {
 //        dto.setDURATION_START(DURATION_START);
 //        dto.setDURATION_END(DURATION_END);
 
-        return null;
+        return dto;
     }
 
 } //end class

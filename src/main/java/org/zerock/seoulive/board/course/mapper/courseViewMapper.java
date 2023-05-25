@@ -15,7 +15,7 @@ public interface courseViewMapper {
 //    @Select("select * from tbl_course where seq > 0")
     public List<courseVO> getList();
 
-    public courseVO read(Integer seq);
+    public List<courseVO> read(Integer seq);
 
     public Integer delete(Integer seq);
 

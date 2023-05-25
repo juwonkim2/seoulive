@@ -48,10 +48,10 @@
                 console.log("JS TEST");
 
                 var seqValue = 0; // seqValue 변수를 값과 함께 초기화
-                var InputContent = ""; // InputContent 변수를 빈 문자열로 초기화
 
-                var seqValue = '<c:out value="${__BOARD__.SEQ}"/>';
-                
+                var seqValue = <c:out value="${__BOARD__.SEQ}"/>;
+
+
                 var commWriter = $(".username");
                 var commTime = $(".comm_usercommtime");
                 var commContent = $(".comm_usercommtxt");
