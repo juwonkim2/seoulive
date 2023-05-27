@@ -6,8 +6,11 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.Criteria;
+import org.zerock.seoulive.board.course.domain.commDTO;
 import org.zerock.seoulive.board.course.domain.commVO;
+import org.zerock.seoulive.board.course.exception.ServiceException;
 import org.zerock.seoulive.board.course.mapper.commentMapper;
+import org.zerock.seoulive.board.course.persistence.CourseDAO;
 
 import java.util.List;
 @Log4j2
@@ -18,18 +21,24 @@ public class commServiceImpl implements commService{
     @Setter(onMethod_ = @Autowired)
     private commentMapper mapper;
 
+    @Autowired private CourseDAO dao;
     @Override
-    public List<commVO> list(Criteria cri, String board_name) throws Exception {
-        log.trace(" >>> list({}) invoked", board_name);
+    public List<commDTO> list(Integer seq) throws Exception {
+        log.trace(" >>> list({}) invoked");
+        try{
+            return this.mapper.commList(seq);
 
-        return mapper.getListWithPaging(cri, board_name);
+        } catch (Exception e){
+            throw new ServiceException(e);
+        }
+
     }
 
     @Override
-    public Integer write(commVO vo) throws Exception {
+    public void write(commDTO dto) throws Exception {
         log.info("write() invoked");
 
-        return this.mapper.commRegit(vo);
+        this.mapper.commRegit(dto);
     }
 
     @Override

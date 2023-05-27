@@ -22,17 +22,17 @@ public class commVO {
         log.trace("toDTO() invoked");
 
         commDTO dto = new commDTO();
-        dto.setSEQ(SEQ);
-        dto.setWRITER(WRITER);
-        dto.setCONTENT(CONTENT);
-
-        this.setWRITE_DATE(new Date());
-        dto.setWRITE_DATE(WRITE_DATE);
-
-
-        dto.setMODIFY_DATE(MODIFY_DATE);
-        dto.setBOARD_NAME(BOARD_NAME);
-        dto.setPOST_SEQ(POST_SEQ);
+//        dto.setSEQ(SEQ);
+//        dto.setWRITER(WRITER);
+//        dto.setCONTENT(CONTENT);
+//
+//        this.setWRITE_DATE(new Date());
+//        dto.setWRITE_DATE(WRITE_DATE);
+//
+//
+//        dto.setMODIFY_DATE(MODIFY_DATE);
+//        dto.setBOARD_NAME(BOARD_NAME);
+//        dto.setPOST_SEQ(POST_SEQ);
 
         log.info("\t dto: {}", dto);
         return dto;

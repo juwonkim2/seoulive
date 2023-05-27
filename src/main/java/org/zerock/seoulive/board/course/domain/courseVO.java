@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Value
 public class CourseVO {
-    private Integer seq;
+    private Integer SEQ;
     private String WRITER;
     private String TITLE;
     private String REVIEW;
@@ -19,7 +19,7 @@ public class CourseVO {
     public CourseDTO toDTO() {
         CourseDTO dto = new CourseDTO();
 
-        dto.setSeq(seq);
+        dto.setSeq(SEQ);
         dto.setWRITER(WRITER);
         dto.setTITLE(TITLE);
         dto.setREVIEW(REVIEW);

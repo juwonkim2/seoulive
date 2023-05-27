@@ -7,16 +7,17 @@
 <mapper namespace="org.zerock.seoulive.board.course.mapper.commentMapper">
 
     <!-- 작성   -->
-    <insert id="commRegit" parameterType = "org.zerock.seoulive.board.course.domain.commVO">
-        insert into tbl_comment (SEQ, WRITER,CONTENT,WRITE_DATE)
-        values (#{SEQ}, #{WRITER}, #{CONTENT}, #{WRITE_DATE, jdbcType = DATE})
+    <insert id="commRegit">
+        insert into tbl_comment (WRITER,CONTENT,BOARD_NAME,POST_SEQ)
+        values ('yw', #{CONTENT}, 'course',#{POST_SEQ,jdbcType=INTEGER})
     </insert>
 
     <!--조회-->
-    <select id="commList" resultType="org.zerock.seoulive.board.course.domain.commVO">
+    <select id="commList" resultType="org.zerock.seoulive.board.course.domain.commDTO">
         select SEQ, WRITER, CONTENT, WRITE_DATE, BOARD_NAME, POST_SEQ
         from tbl_comment
-        where post_seq = #{post_seq}
+        where POST_SEQ = #{seq, jdbcType=INTEGER}
+          and board_name = 'course'
     </select>
 
     <!-- 삭제 -->
@@ -37,14 +38,5 @@
         select count(seq) from tbl_comment where seq = #{seq}
     </select>
 
-    <!-- seq: 댓글 게시판의 pk, board_name: 게시판 이름(free,course..),
-    post_seq: 게시물 번호(course의 N번째 게시물)  -->
-    <!-- 페이징 -->
-    <select id="getListWithPaging" resultType="org.zerock.seoulive.board.course.domain.commVO">
-        select seq, writer,content, write_date, board_name
-        from tbl_comment
-        where board_name = #{board_name}
-        <!-- bno = #{bno}: fk  -->
-        order by seq asc
-    </select>
+
 </mapper>

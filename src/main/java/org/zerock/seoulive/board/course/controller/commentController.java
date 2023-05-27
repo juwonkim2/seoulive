@@ -2,6 +2,7 @@ package org.zerock.seoulive.board.course.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,67 +20,51 @@ import java.util.Date;
 import java.util.List;
 
 
-@RequestMapping("/replies/")
+@RequestMapping("/board/comment")
 @Log4j2
 
 @Controller
 @AllArgsConstructor
 public class commentController {
-    private commService service;
+    @Autowired private commService service;
+    @Autowired private commDTO dto;
 
 
     //등록
-    @PostMapping(value="/new/{board_name}", consumes = "application/json",produces = {MediaType.TEXT_PLAIN_VALUE})
-    public ResponseEntity<String> create(@PathVariable("board_name") @RequestBody commVO vo) throws Exception {
+    @PostMapping(value="/write")
+    public String create(
+                         @RequestParam("post_seq") Integer post_seq,
+                         @RequestParam("content") String content) throws Exception {
         log.trace("create() invoked");
 
-        try {
-            log.info("commVO: {}" , vo);
+      commDTO commentdto = new commDTO();
+      commentdto.setContent(content);
+      commentdto.setPost_seq(post_seq);
 
-            commDTO dto = vo.toDTO();
-            Date currentDate = new Date();
-            log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  currentDate: {}", currentDate);
-            dto.setWRITE_DATE(currentDate);
+      service.write(commentdto);
 
-            vo.setBOARD_NAME(dto.getBoard_name());
-
-            Integer insertCount = service.write(vo);
-            log.info("reply insert count: ", insertCount);
-
-
-
-            return insertCount ==1 ? new ResponseEntity<>("success", HttpStatus.OK)
-                    :new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (Exception e) {
-            log.info("Error occurred during create: {}", e.getMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-
+      return "redirect:/board/course/get?seq=" + post_seq;
 
     }
 
 
     //특정 게시물 댓글 목록
-    @GetMapping(value= "/pages/{board_name}/{page}",
-    produces = {
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE
-    })
-    public ResponseEntity<List<commVO>> getList(
-            @PathVariable("page") int page,
-            @PathVariable("board_name") String board_name,
-            commVO vo,Model model) throws Exception {
-        log.trace("getList() invoked");
+//    @GetMapping(value= "/getCommentList")
+//
+//    public List<commDTO> getCommentList(
+//           @RequestParam("seq") Integer seq
+//            ,Model model) throws Exception {
+//        log.trace("getList() invoked");
+//
+//
+//        commDTO commdto = new commDTO();
+//        commdto.setSEQ(seq);
+//
+//        return service.list(commdto);
+//
+//    }
 
-        Criteria cri = new Criteria(page, board_name);
-        model.addAttribute("__COMMENT__", vo);
-        log.info("cri");
-
-        return new ResponseEntity<>(service.list(cri, board_name), HttpStatus.OK);
-
-    }
-
+    //삭제
     @GetMapping(params = {"seq"},
     produces = {
             MediaType.TEXT_PLAIN_VALUE})
@@ -91,6 +76,7 @@ public class commentController {
                 :new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    //수정
     @RequestMapping(method = {RequestMethod.PUT, RequestMethod.PATCH},
     value="/{seq}", consumes = "application/json", produces = {MediaType.TEXT_PLAIN_VALUE})
     public ResponseEntity<String> modify(

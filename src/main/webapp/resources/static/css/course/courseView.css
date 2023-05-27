@@ -2,6 +2,164 @@
 .hide{display: block;position:absolute;width:0;height:0;text-indent:-9999999px;overflow:hidden;}
 
 
+* {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    position: relative;
+    max-width: 940px;
+}
+
+ul {
+    list-style: none;
+    display: block;
+    margin: auto;
+}
+
+li {
+    display: inline-block;
+    /*margin: 10px 25px;*/
+}
+
+/*a {
+    color: #0a2240 !important;
+}*/
+
+
+.nav-tabs>li>a {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #0a2240;
+}
+
+
+.tab-content {
+    padding-top: 15px;
+    padding-bottom: 100px;
+}
+
+
+.schedule-item {
+    border-bottom: 1px solid #e6e6e6;
+    /*position: absolute;*/
+    /*border: 1px solid black;*/
+    top: 80px;
+    min-height: 300px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.time-box {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    position: absolute;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 1px solid #49539E;
+    align-items: center;
+    justify-content: center;
+    /*position: absolute; !* 추가 *!*/
+
+}
+.row {
+    position: relative;
+}
+
+.col-md-10 {
+    position: absolute;
+    /*display: flex;*/
+    align-items: flex-start;
+}
+
+
+/* duration_start */
+.col-md-10>h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rebeccapurple;
+    width: 500px;
+    height: 50px;
+
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    left: 220px;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+.travel_title_pic {
+    border: 3px solid aquamarine;
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+    top: 80px; /* 원하는 위치 조정값 */
+    left: 220px; /* 원하는 위치 조정값 */
+
+}
+
+.travel-info {
+    display: block;
+    height: 900px;
+    justify-content: space-between;
+    /*border: 3px solid darkgreen;*/
+
+}
+
+.travel_title {
+    border: 1px solid yellowgreen;
+    width: 400px;
+    height: 100px;
+
+    position: relative;
+    display: flex;
+
+    font-size: 17px;
+    top: 80px; /* 원하는 위치 조정값 */
+    left: 340px; /* 원하는 위치 조정값 */
+
+
+}
+.reviewpertravel {
+    border: 1px solid deeppink;
+    width: 700px;
+    height: 50px;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    top: 130px; /* 원하는 위치 조정값 */
+    left: 40px; /* 원하는 위치 조정값 */
+}
+
+
+
+
+
+
+/* ====================================================================================== */
+
+
 /* 커버 */
 .plan_page {
     width: 1200px;
@@ -99,6 +257,8 @@
     border: 1px solid seagreen;
 }
 
+
+
 /* 일정표,댓글 탭 */
 .plan_mnu_box {
     float: left;
@@ -137,34 +297,43 @@
 }
 
 
+
+
+
+
+
+
+
+
+
 /* 본문(이후) */
 .wrap_planpage1 {
+
     width: 100%;
-    height: 80vh;
+    height: auto;
     border: 2px solid black;
     margin-top: 100px;
-
-}
-
-.wrap_planpage2 {
-    width: 100%;
-    height: 80vh;
-    border: 2px solid black;
-    margin-top: 50px;
 }
 
 .planpage_day{
     position: absolute;
     width: 200px;
-    height: 80vh;
-    border-right: 2px solid black;
+    height: auto;
+    /*border-right: 2px solid black;*/
+    border: 3px solid navy;
 }
 
+/*   DAY1  */
 .planpage_daytxt {
     position: relative;
-    line-height: 100px;
+    /*line-height: 100px;*/
     font-size: 50px;
+    border: 1px solid red;
+    width: 100%;
+    height: auto;
     justify-content: center;
+    /*padding-top: 50px;*/
+    /*padding-bottom:50px;*/
     align-items: center;
     margin-left: 45px;
     top: 35%;
@@ -175,7 +344,7 @@
     position: relative;
     /*border: 1px solid slateblue;*/
     width: 800px;
-    height: 15%;
+    height: auto;
     left: 200px;
     font-size: 1.5rem;
     padding-left: 3px;
@@ -197,7 +366,7 @@
     position: relative;
     bottom: 21px;
     width: 1000px;
-    height: 17.5vh;
+    height: auto;
     border-bottom: 2px solid black;
     left: 200px;
     font-size: larger;
@@ -242,68 +411,44 @@
 
 /* 본문(이후)끝 */
 
+
 /* 맵 */
 .map {
     display: block;
     border: 1px solid saddlebrown;
-    width: 1200px;
-    height: 500px;
-    margin-top: 500px;
+    width: 800px;
+    height: 300px;
+    margin-top: 20px;
+    left: 15%;
+    position: relative;
 }
 .map img {
     width: 100%;
-    height: 500px;
+    height: 300px;
 }
+
+
+
+
 
 /* 댓글 */
-.comm_page {
-    position: relative;
-    width: 1210px;
-    height: 453px;
-    margin-top: 2%;
-    border: 1px solid black;
-}
-.comm_list {
-    position: relative;
-    width: 1200px;
-    height: 50px;
-    border-bottom: 1px solid black;
-    font-size: 17px;
-    font-weight: bold;
-    line-height: 50px;
-    padding-left: 10px;
 
-}
-.comm_write {
-    width: 1200px;
-    height: 100px;
-
-}
-.comm_writecontent {
-    position: absolute;
-}
-.comm_rigitbutton {
-    position: relative;
-    top: 20px;
-    left: 90%;
-    border-radius: 8%;
-    text-align: center;
-    justify-content: center;
-}
 .comments {
-
     display: block;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-
+    position: relative;
 }
 
 .comm_user_info {
-    width: 100%;
-    height: 100px;
+    position: relative;
+    width: 800px;
+    min-height: 50px;
+    height: auto;
+    left: 15%;
     display: flex;
-    border-bottom: 1px solid black;
+    border: 1px solid darkred;
 }
 .comm_userpic img {
     width: 90px;
@@ -311,20 +456,26 @@
     margin-top: 10px;
     margin-left: 3px;
     display: flex;
+    border: 1px solid black;
     border-radius: 90%;
     position: absolute;
 }
-.username {
-    position: relative;
+.comm_username {
+    position: absolute;
     display: flex;
 
     width: 100px;
-    height: 100px;
+    height: 50px;
+    /*border: 1px solid navy;*/
+
     margin-left: 110px;
-    margin-top: 20px;
+    margin-top: 10px;
 
     margin-right: 10px;
     font-weight: bold;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -333,19 +484,23 @@
 .comm_usercommtime {
     position: relative;
     display: flex;
-    width: 100px;
-    height: 100px;
+
+    width: 300px;
+    height: 50px;
+
+    /*border: 1px solid deepskyblue;*/
     margin-left: 300px;
-    bottom: 100px;
+    bottom: -15px;
 }
 .comm_usercommtxt{
     position: relative;
     display: flex;
-    width: 100px;
-    height: 100px;
+    width: 800px;
+    height: 50px;
     margin-left: 110px;
-    bottom: 150px;
-    /* border: 3px solid rgba(64, 186, 195, 0.482); */
+
+    top: 15px;
+    /*border: 3px solid rgba(64, 186, 195, 0.482);*/
 }
 
 
@@ -383,6 +538,25 @@
     margin-left: 10px;
     color: #e76649;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*  */
 #container{margin:0 auto;max-width:1200px;}

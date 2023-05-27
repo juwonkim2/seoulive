@@ -3,10 +3,9 @@ console.log("Comment Module .....");
 var commService = (function() {
 
     function add(comm, callback, error) {
-        console.log("add comment .......");
 
         $.ajax({
-            type:'post',
+            type:'POST',
             url: '/replies/new',
             data: JSON.stringify(comm),
             contentType: "application/json; charset=utf-8",
@@ -19,8 +18,10 @@ var commService = (function() {
                 if(error) {
                     error(er);
                 }
+                console.log("add comment .......");
 
             }
+
         })
     }
     function getList(param, callback, error) {

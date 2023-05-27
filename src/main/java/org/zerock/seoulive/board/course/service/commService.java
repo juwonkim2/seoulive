@@ -2,15 +2,16 @@ package org.zerock.seoulive.board.course.service;
 
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.Criteria;
+import org.zerock.seoulive.board.course.domain.commDTO;
 import org.zerock.seoulive.board.course.domain.commVO;
 
 import java.util.List;
 
 
 public interface commService {
-    public List<commVO> list(Criteria cri, String board_name) throws Exception;
+    public List<commDTO> list(Integer seq) throws Exception;
 
-    public Integer write(commVO vo) throws Exception; //등록
+    public void write(commDTO dto) throws Exception; //등록
 
     public Integer modify(commVO vo) throws Exception; //수정
 

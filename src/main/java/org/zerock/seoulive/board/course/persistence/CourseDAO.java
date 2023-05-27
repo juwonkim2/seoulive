@@ -1,20 +1,13 @@
-//package org.zerock.seoulive.board.course.persistence;
-//
-//import java.util.List;
-//
-//import org.apache.ibatis.annotations.Insert;
-//import org.apache.ibatis.annotations.Select;
-//import org.zerock.seoulive.board.course.domain.CourseCommVO;
-//import org.zerock.seoulive.board.course.domain.CourseDTO;
-//import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
-//import org.zerock.seoulive.board.course.domain.CoursePageTO;
-//import org.zerock.seoulive.board.course.domain.CourseTravelVO;
-//import org.zerock.seoulive.board.course.domain.CourseVO;
-//import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
-//import org.zerock.seoulive.board.course.domain.CourseWriteVO;
-//import org.zerock.seoulive.board.travel.domain.TravelDTO;
-//
-//public interface CourseDAO {
+package org.zerock.seoulive.board.course.persistence;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.zerock.seoulive.board.course.domain.*;
+import org.zerock.seoulive.board.travel.domain.TravelDTO;
+
+public interface CourseDAO {
 //
 ////	// 1. 과연 게시판 목록조회, C/R/U/D에 필요한 메소드는 무엇일까?
 ////	@Select("""
@@ -95,19 +88,13 @@
 //	public CourseVO read(Integer seq);
 //
 //	// 10. 댓글 가져오기
-//	@Select("""
-//			SELECT writer, content, write_date
-//	        FROM tbl_comment
-//	        WHERE post_seq = #{seq}
-//	          AND board_name = 'course'
-//			""")
-//	public abstract List<CourseCommVO> commList(Integer seq);
+//	public abstract List<commDTO> commList(commDTO dto);
 //
 //	@Insert("""
 //			INSERT INTO tbl_comment (CONTENT, BOARD_NAME, POST_SEQ, WRITER)
 //			VALUES (#{content}, 'course', #{seq}, 'NICKNAME')
 //			""")
-//	public abstract void commRegister(String content, Integer seq);
+//	public abstract void commRegister(commDTO dto);
 //
 //
 //
@@ -118,4 +105,4 @@
 ////	public Integer update(courseDTO course);
 //
 //
-//} // end interface
+} // end interface

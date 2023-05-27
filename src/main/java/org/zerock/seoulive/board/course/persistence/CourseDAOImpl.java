@@ -1,25 +1,39 @@
-//package org.zerock.seoulive.board.course.persistence;
+package org.zerock.seoulive.board.course.persistence;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.zerock.seoulive.board.course.domain.CourseCommVO;
+import org.zerock.seoulive.board.course.domain.commDTO;
+
+import java.util.List;
+
+@Log4j2
+@AllArgsConstructor
+
+@Repository("courseDAO")
+public class CourseDAOImpl implements CourseDAO {
+    @Autowired private SqlSessionFactory sqlSessionFactory;
+
+//    @Override
+//    public List<commDTO> commList(commDTO dto) {
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+//        return sqlSession.selectList("commList", dto);
 //
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
 //
-//import org.apache.ibatis.annotations.Param;
-//import org.apache.ibatis.session.SqlSession;
-//import org.apache.ibatis.session.SqlSessionFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Repository;
-//import org.zerock.seoulive.board.course.domain.*;
-//import org.zerock.seoulive.board.travel.domain.TravelDTO;
+//    }
 //
-//import lombok.AllArgsConstructor;
-//import lombok.extern.log4j.Log4j2;
+//    @Override
+//    public void commRegister(commDTO dto) {
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+//        sqlSession.update("commRegit", dto);
 //
-//@Log4j2
-//@AllArgsConstructor
-//
-//@Repository("courseDAO")
-//public class CourseDAOImpl implements CourseDAO {
+//        sqlSession.commit();
+//        sqlSession.close();
+//    }
 //
 //	@Autowired
 //	private SqlSessionFactory sqlSession;
@@ -71,13 +85,5 @@
 //	}
 //
 //
-//	@Override
-//	public List<CourseCommVO> commList(Integer seq) {
-//		return null;
-//	}
-//
-//	@Override
-//	public void commRegister(String content, Integer seq) {
-//
-//	}
-//} // end class
+
+} // end class

@@ -3,6 +3,7 @@ package org.zerock.seoulive.board.course.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,15 +34,15 @@ public class CourseController {
 //	@GetMapping("/list")
 //	void list(CoursePageTO page, Model model) throws ControllerException {
 //		log.trace("list({}, {}) invoked.", page, model);
-//		
+//
 //		try {
 //			List<CourseDTO> list = this.service.getList(page);
-//			
+//
 //			for (int i = 0; i<list.size(); i++) {
 //				list.get(i).setListVO(this.service.getTravelList(list.get(i)));
 //			} // for
 //			model.addAttribute("__LIST__", list);
-//			
+//
 //			CoursePageDTO pageDTO = new CoursePageDTO(page, this.service.getTotal());
 //			model.addAttribute("pageMaker", pageDTO);
 //		} catch(Exception e) {
@@ -144,22 +145,19 @@ public class CourseController {
 	
 	//상세조회
     @GetMapping(path ={ "/get", "/modify"}, params = {"seq"})
-    public void get(Integer seq, Model model) throws ControllerException {
+    public String get(Integer seq, Model model) throws ControllerException {
        log.trace("get() invoked");
 
        try {
-
-               List<CourseVO> vo = this.service.get(seq);
+               CourseVO vo = this.service.get(seq);
                List<CourseTravelVO> travelList = this.service.getTravelList(seq);
-//               List<CourseCommVO> commList = this.commservice.commList(seq);
-//               Integer total = commservice.getTotal(seq);
-//               log.info("댓글 갯수: {}", total);
+               List<commDTO> List = this.commservice.list(seq);
 
                model.addAttribute("__BOARD__", vo);
                model.addAttribute("__COURSETRAVELBOARD__", travelList);
-//               model.addAttribute("__COMMENT_LIST__", commList);
-//               model.addAttribute("__COMMENT_TOTAL__",total);
+               model.addAttribute("__COMMENT_LIST__", List);
 
+           return "board/course/get";
        } catch (Exception e) {
     	   e.getStackTrace();
            throw new ControllerException(e);
@@ -167,14 +165,14 @@ public class CourseController {
     } // get
 
     @PostMapping("/comm_write")
-    public String commRegister(commVO commvo) throws ControllerException {
+    public String commRegister(commDTO dto) throws ControllerException {
 		log.trace("commRegister({}) invoked.", commservice);
 
 		try {
 
-			this.commservice.write(commvo);
+			this.commservice.write(dto);
 
-			return "redirect:/board/course/get?seq="+commvo.getSEQ();
+			return "redirect:/board/course/get?seq="+dto.getSeq();
 		} catch(Exception e) {
 			throw new ControllerException(e);
 		} // try-catch

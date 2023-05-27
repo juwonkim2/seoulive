@@ -52,6 +52,7 @@
 	<aop:aspectj-autoproxy />
 
 	<context:component-scan base-package="org.zerock.seoulive.board.course" />
+	<context:component-scan base-package="org.zerock.seoulive.board.course.domain" />
 	<context:component-scan base-package="org.zerock.seoulive.board.course.service" />
 	<context:component-scan base-package="org.zerock.seoulive.board.course.persistence" />
 
