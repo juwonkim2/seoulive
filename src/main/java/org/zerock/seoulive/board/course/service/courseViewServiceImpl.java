@@ -33,7 +33,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //상세조회
     @Override
-    public CourseVO get(Integer seq) throws ServiceException {
+    public CourseViewVO get(Integer seq) throws ServiceException {
         log.trace("get() invoked");
 
         return mapper.read(seq);
@@ -41,7 +41,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //수정하기
     @Override
-    public boolean modify(CourseDTO course) throws ServiceException {
+    public boolean modify(CourseViewDTO course) throws ServiceException {
         log.trace("modify() invoked");
 
         return mapper.update(course) ==1;
@@ -57,7 +57,7 @@ public class courseViewServiceImpl implements courseViewService{
 
     //list 전체 반환
     @Override
-    public List<CourseVO> getList() throws ServiceException {
+    public List<CourseViewVO> getList() throws ServiceException {
         log.trace("getList() invoked");
 
         return mapper.getList();

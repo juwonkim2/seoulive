@@ -6,13 +6,13 @@
 
 <mapper namespace="org.zerock.seoulive.board.course.mapper.courseViewMapper">
 
-    <select id="getList" resultType="org.zerock.seoulive.board.course.domain.CourseVO">
+    <select id="getList" resultType="org.zerock.seoulive.board.course.domain.CourseViewVO">
         SELECT *
         FROM tbl_course
         WHERE seq  <![CDATA[>]]> 0
     </select>
 
-    <select id="read" resultType="org.zerock.seoulive.board.course.domain.CourseVO">
+    <select id="read" resultType="org.zerock.seoulive.board.course.domain.CourseViewVO">
         SELECT *
         FROM tbl_course
         WHERE seq = #{seq}

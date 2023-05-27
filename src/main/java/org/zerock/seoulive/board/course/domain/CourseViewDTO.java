@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class CourseDTO {
+public class CourseViewDTO {
     private Integer seq;
     private String WRITER;
     private String TITLE;

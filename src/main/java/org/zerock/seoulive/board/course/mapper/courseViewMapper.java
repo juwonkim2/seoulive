@@ -2,24 +2,23 @@ package org.zerock.seoulive.board.course.mapper;
 
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-import org.zerock.seoulive.board.course.domain.CourseDTO;
+import org.zerock.seoulive.board.course.domain.CourseViewDTO;
 import org.zerock.seoulive.board.course.domain.CourseTravelDTO;
 import org.zerock.seoulive.board.course.domain.CourseTravelVO;
-import org.zerock.seoulive.board.course.domain.CourseVO;
+import org.zerock.seoulive.board.course.domain.CourseViewVO;
 
 import java.util.List;
 @Mapper
 public interface courseViewMapper {
 
 //    @Select("select * from tbl_course where seq > 0")
-    public List<CourseVO> getList();
+    public List<CourseViewVO> getList();
 
-    public CourseVO read(Integer seq);
+    public CourseViewVO read(Integer seq);
 
     public Integer delete(Integer seq);
 
-    public Integer update(CourseDTO course);
+    public Integer update(CourseViewDTO course);
 
 //    =============== course_travel ===================
 

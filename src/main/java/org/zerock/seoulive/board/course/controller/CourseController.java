@@ -3,7 +3,6 @@ package org.zerock.seoulive.board.course.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +12,6 @@ import org.zerock.seoulive.board.course.domain.*;
 import org.zerock.seoulive.board.course.exception.ControllerException;
 import org.zerock.seoulive.board.course.service.commService;
 import org.zerock.seoulive.board.course.service.courseViewService;
-import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -149,7 +147,7 @@ public class CourseController {
        log.trace("get() invoked");
 
        try {
-               CourseVO vo = this.service.get(seq);
+               CourseViewVO vo = this.service.get(seq);
                List<CourseTravelVO> travelList = this.service.getTravelList(seq);
                List<commDTO> List = this.commservice.list(seq);
 
