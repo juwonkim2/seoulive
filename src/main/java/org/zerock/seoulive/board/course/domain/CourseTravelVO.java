@@ -9,9 +9,9 @@ public class CourseTravelVO {
     private Integer BOARD_SEQ;
     private Integer TRAVEL_SEQ;
     private Integer UPLOAD_SEQ;
-    private String LINK;
+    private String TRAVEL_ID;
     private String USER_REVIEW;
-//    private String ID;
+
     
     private String CATEGORY;
     private String TITLE;

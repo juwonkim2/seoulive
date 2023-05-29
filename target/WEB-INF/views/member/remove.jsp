@@ -20,6 +20,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js" ></script>
 
+
+
 </head>
 <body>
 
@@ -33,9 +35,9 @@
     </div>
 
     <input type="button" value="확인" class="passwordnotibtn"
-           style="width: 45px;height: 35px;", onclick="pringMsg()">
+           style="width: 45px;height: 35px;", onclick="checkpassword()">
 
-    <div class="passwordnoti"> </div>
+    <div id="errorMessage" class="passwordnoti"> </div>
 
   </div>
   <div class="secession">
@@ -61,4 +63,25 @@
 
   <jsp:include page="../layout/footer.jsp"/>
 </body>
+
+
+<script>
+  function checkpassword() {
+    var password = document.getElementById("passwordquote").value;
+    var errorMessage = document.getElementById("errorMessage");
+
+
+      if (password == "qlalfqjsgh") {
+        alert("확인되었습니다.")
+
+
+
+    }else {
+        alert("틀린 비밀번호 입니다");
+
+    }
+  }
+
+
+</script>
 </html>

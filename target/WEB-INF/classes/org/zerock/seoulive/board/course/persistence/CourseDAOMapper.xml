@@ -6,7 +6,7 @@
 
 <mapper namespace="org.zerock.seoulive.board.course.persistence.CourseDAO">
 
-    <select id="list" resultType="org.zerock.seoulive.board.course.domain.CourseVO">
+    <select id="list" resultType="org.zerock.seoulive.board.course.domain.CourseViewVO">
         SELECT
             *
         FROM

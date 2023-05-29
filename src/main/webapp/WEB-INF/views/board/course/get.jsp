@@ -105,7 +105,7 @@
         <div class="container">
 
             <!-- Schedule: Day 1 -->
-            <div class="tab-content col-lg-9">
+
 
                     <c:set var="lastIndex" value="${__COURSETRAVELBOARD__.size() -1 }" />
                     <c:set var="travelId" value="${__COURSETRAVELBOARD__[lastIndex].TRAVEL_ID}" />
@@ -118,45 +118,43 @@
                         <%-- <p>반복 인덱스: ${loop.index}</p> --%>
 
                     <%--    day 박스, duration_start(title), travel_title, review(여행지당) --%>
+            <div class="tab-content col-lg-9">
                 <div id="day1" class="tab-pane fade in active">
                     <div class="row schedule-item">
                         <div class="time-box"> Day${loop.count}</div>
-                        <div class="col-md-10">
-                            <h4>${__BOARD__.DURATION_START}</h4>
+                            <div class="col-md-10">
+                                <h4>${__BOARD__.DURATION_START}</h4>
 
-                        <c:forEach var="courseTravelVO" items = "${__COURSETRAVELBOARD__}">
-                            <c:choose>
-                                <c:when test="${courseTravelVO.TRAVEL_ID.substring(0, 1) == loop.count}">
+                                <c:forEach var="courseTravelVO" items = "${__COURSETRAVELBOARD__}">
+                                    <c:choose>
+                                        <c:when test="${courseTravelVO.TRAVEL_ID.startsWith(loop.count)}">
 
 
-                            <div class="travel_title_pic">
-<%--                                <img src="${courseTravelVO.LINK}">--%>
-<%--                                pic--%>
-                            </div>
+                                        <div class="travel_title_pic">
+            <%--                                <img src="${courseTravelVO.LINK}">--%>
+            <%--                                pic--%>
+                                        </div>
                                     <div class="travel-info">
-                            <div class="travel_title"> ${courseTravelVO.TITLE} / ${courseTravelVO.CATEGORY}</div>
-                            <div class="reviewpertravel">${courseTravelVO.USER_REVIEW}</div>
-                            </div>
-                                </c:when>
+                                    <div class="travel_title"> ${courseTravelVO.TITLE} / ${courseTravelVO.CATEGORY}</div>
+                                    <div class="reviewpertravel">${courseTravelVO.USER_REVIEW}</div>
+                                    </div>
+                                    </c:when>
 
-                            </c:choose>
+                                </c:choose>
 
-                        </c:forEach>
+                            </c:forEach>
                         </div>
 <%--         col-md-10  의 div    --%>
 
+                        </div>
                     </div>
-
-                        </c:forEach>
-
-
-
-
+                    </c:forEach>
+                </div>
             </div>
-        </div>
-        </div>
 
-                    </div>
+
+
+        </div>
     </section>
 
 
@@ -171,17 +169,17 @@
 
     <%-- 댓글    --%>
     <div class="card my-4">
-        <h5 class="card-header" style="position: relative; left: 15%">Leave a Comment:</h5>
+        <h5 class="card-header" style="position: relative; left: 15%; top: 280px ">Leave a Comment:</h5>
         <div class="card-body">
             <form name="comment-form" action="/board/comment/write" method="post" autocomplete="off">
                 <div class="form-group">
                     <%--                                <input type="hidden" name="writer" value="${__BOARD__.SEQ}" />--%>
                     <input type="hidden" name="post_seq" value="${__BOARD__.SEQ}" />
                     <textarea name="content" class="form-control" rows="3"
-                              style="width: 800px; resize: none; position:relative; left:15%;" ></textarea>
+                              style="width: 800px; resize: none; position:relative; left:15%; top: 280px;" ></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary"
-                        style="position: relative; left: 82%; top:-38px  ">Submit</button>
+                        style="position: relative; left: 82%; top:280px;  ">Submit</button>
             </form>
         </div>
     </div>

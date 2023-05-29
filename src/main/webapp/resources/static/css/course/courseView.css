@@ -118,7 +118,7 @@ li {
 
 .travel-info {
     display: block;
-    height: 900px;
+    height: 600px;
     justify-content: space-between;
     /*border: 3px solid darkgreen;*/
 
@@ -130,7 +130,7 @@ li {
     height: 100px;
 
     position: relative;
-    display: flex;
+    display: block;
 
     font-size: 17px;
     top: 80px; /* 원하는 위치 조정값 */
@@ -144,7 +144,7 @@ li {
     height: 50px;
 
     position: relative;
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
 
@@ -415,9 +415,11 @@ li {
 /* 맵 */
 .map {
     display: block;
+    /*position: absolute;*/
     border: 1px solid saddlebrown;
     width: 800px;
     height: 300px;
+    top: 280px;
     margin-top: 20px;
     left: 15%;
     position: relative;
@@ -439,6 +441,8 @@ li {
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    top: 280px;
+    margin-bottom: 100px;
 }
 
 .comm_user_info {
@@ -508,7 +512,10 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 100px;
+    margin-bottom: 200px;
+    position: relative;
+    top: 170px;
+
 }
 
 .boardList,
