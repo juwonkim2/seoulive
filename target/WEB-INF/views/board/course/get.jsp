@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -201,7 +204,7 @@
 
     <div class="getContainer">
         <div class="boardList"><button type="button" class="boardList">list</button></div>
-        <div class="viewModify"><button type="button" class="viewModify">modify</button></div>
+        <div class="viewModify"><button type="button" class="viewModify">${showModifybtn}</button></div>
     </div>
 
 

@@ -1,5 +1,7 @@
 package org.zerock.seoulive.board.course.controller;
 
+import java.net.Authenticator;
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.zerock.seoulive.board.course.service.courseViewService;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.zerock.seoulive.member.join.service.UserService;
 
 
 @Log4j2
@@ -27,6 +30,8 @@ public class CourseController {
 	@Autowired
 	private courseViewService service;
     @Autowired private commService commservice;
+
+    @Autowired private UserService userService;
 	
 	// 1. 게시판 목록 조회
 //	@GetMapping("/list")
@@ -143,7 +148,7 @@ public class CourseController {
 	
 	//상세조회
     @GetMapping(path ={ "/get", "/modify"}, params = {"seq"})
-    public String get(Integer seq, Model model) throws ControllerException {
+    public String get(Integer seq, Model model, Principal principal) throws ControllerException {
        log.trace("get() invoked");
 
        try {
@@ -154,6 +159,22 @@ public class CourseController {
                model.addAttribute("__BOARD__", vo);
                model.addAttribute("__COURSETRAVELBOARD__", travelList);
                model.addAttribute("__COMMENT_LIST__", List);
+
+
+               //사용자 정보 가져오기
+                String loggedInUsername = principal.getName();
+                String authorUsername = vo.getWRITER();
+
+                boolean showModifybtn = false;
+                if(loggedInUsername != null && authorUsername != null) {
+                    if(loggedInUsername.equals((authorUsername))) {
+                        showModifybtn = true;
+                    }
+                }
+
+                model.addAttribute("showModifybtn", showModifybtn);
+
+
 
            return "board/course/get";
        } catch (Exception e) {
