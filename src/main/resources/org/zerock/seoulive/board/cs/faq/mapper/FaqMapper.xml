@@ -31,7 +31,7 @@
         </selectKey>
 
         INSERT INTO tbl_faq(title, content, writer, category)
-        VALUES(#{title}, #{content}, #{writer}, #{category})
+            VALUES(#{title}, #{content}, #{writer}, #{category})
     </insert>
 
     <select id="select" resultType="org.zerock.seoulive.board.cs.faq.domain.FaqVO">
@@ -71,14 +71,14 @@
 
     <select id="getRecentList" resultType="org.zerock.seoulive.board.cs.faq.domain.FaqVO">
         <![CDATA[
-        SELECT *
-        FROM (
-                 SELECT seq, title, content, writer, category, write_date, modify_date
-                 FROM tbl_faq
-                 ORDER BY seq DESC
-             )
-        WHERE rownum <= 5
-        ORDER BY seq ASC
+            SELECT *
+            FROM (
+                     SELECT seq, title, content, writer, category, write_date, modify_date
+                     FROM tbl_faq
+                     ORDER BY seq DESC
+                 )
+            WHERE rownum <= 5
+            ORDER BY seq ASC
         ]]>
     </select>
 </mapper>
