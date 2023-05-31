@@ -55,10 +55,10 @@ public class UserController {
 
             // 프로필 사진
             if(profileImg != null) {
-                File dir = new File(File.separator+"tmp/upload");
+                File dir = new File(File.separator+"/opt/homebrew/Cellar/tomcat@9/9.0.73/libexec/bin/upload");
                 if(dir.exists() == false)   {  dir.mkdirs();  }
-                File savePath = new File(File.separator+"tmp/upload/" + profileImg.getOriginalFilename());
-//            File savePath = new File("file:///opt/uploadfiles/" + profileImg.getOriginalFilename());
+                File savePath = new File(File.separator+"/opt/homebrew/Cellar/tomcat@9/9.0.73/libexec/bin/upload/" + profileImg.getOriginalFilename());
+//                File savePath = new File("file:///opt/uploadfiles/" + profileImg.getOriginalFilename());
                 profileImg.transferTo(savePath);
 
                 dto.setProfileImgName("static/img/profile/" + profileImg.getOriginalFilename());
