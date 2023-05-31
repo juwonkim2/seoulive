@@ -15,46 +15,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ</title>
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/faq/FAQList.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/faq/FAQList.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
     <script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/js/faq/faq.js"></script>
-
+    <script src="${pageContext.request.contextPath}/resources/static/js/faq.js"></script>
+    
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
     <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 
     <script>
-        $(document).ready(function (){
-
-
-        });
         $(function(){
-            // var searchParam = location.search
-            // var params = new URLSearchParams(searchParam);
-            // var getCategory= params.get('category');
-            // if(getCategory == null){
-            //
-            // } else{
-            //     $('.category_box ul li a').removeClass('active');
-            //     $('[data-id="'+ getCategory + '"]').addClass('active');
-            // }
-
+          // 등록버튼 클릭시 페이지 이동
             $('#regBtn').click(function(){
                 let currPage = "${pageMaker.cri.currPage}";
                 console.log(currPage);
                 location.href = "/board/cs/faq/write?currPage=" + currPage;
             });
-
+          // 삭제 버튼 클릭 시 삭제
             $(document).on('click', '#removeBtn', function(e) {
                 let cnt = $("input[name='article_chk']:checked").length;
                 var seq = [];
                 $("input[name='article_chk']:checked").each(function() {
                     seq.push($(this).val());
-
                 });
 
                 if(cnt == 0){
@@ -123,7 +109,7 @@
                     cache : false,
                     success: function(result) {
                         $('.topic_wrap').html($(result).find('.topic'));
-                        $('.paging_wrap').html($(result).find('paging_box'));
+                        $('.paging_wrap').html($(result).find('.paging_box'));
                     },
                     error: function(xhr, status, error) {
                         console.error(error);
@@ -181,14 +167,18 @@
         <input type="hidden" name="category" value="${ __BOARD__.category }">
         <c:forEach var="faqVO" items="${__LIST__}">
             <div class="topic">
-                <span class="article_chk" ><input type="checkbox" name="article_chk" value="${faqVO.seq}"></span>
+                <c:if test="${not empty __AUTH__}">
+                    <span class="article_chk" ><input type="checkbox" name="article_chk" value="${faqVO.seq}"></span>
+                </c:if>
                 <div class="open">
                     <h2 class="question">
                         <span class="cate">[${faqVO.category}]</span> ${faqVO.title}
                     </h2>
-                    <div class="modify">
-                        <a href="/board/cs/faq/modify?currPage=${pageMaker.cri.currPage}&seq=${faqVO.seq}">수정</a>
-                    </div>
+                        <c:if test="${not empty __AUTH__}">
+                        <div class="modify">
+                            <a href="/board/cs/faq/modify?currPage=${pageMaker.cri.currPage}&seq=${faqVO.seq}">수정</a>
+                        </div>
+                    </c:if>
                     <span class="faq-t"></span>
                 </div>
                 <p class="answer">
@@ -220,13 +210,14 @@
                 </ul>
             </div>
         </div>
-
-        <div class="button_wrap">
-            <ul class="button_box">
-                <li><button type="button" id="regBtn">등록</button></li>
-                <li><button type="button" id="removeBtn">삭제</button></li>
-            </ul>
-        </div>
+        <c:if test="${not empty __AUTH__}">
+            <div class="button_wrap">
+                <ul class="button_box">
+                    <li><button type="button" id="regBtn">등록</button></li>
+                    <li><button type="button" id="removeBtn">삭제</button></li>
+                </ul>
+            </div>
+        </c:if>
     </main>
 
 
