@@ -16,11 +16,11 @@
     <meta charset="UTF-8">
     <title>여행지 List</title>
 
-    <link rel="stylesheet" href="../../../../resources/static/css/layout/layout.css">
-    <link rel="stylesheet" href="../../../../resources/static/css/travel/list.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/travel/list.css">
     <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}resources/static/css/travel/list.css">--%>
 
-    <script src="../../../../resources/static/js/travel/list.js" defer></script>
+    <script src="${pageContext.request.contextPath}/resources/static/js/travel/list.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
