@@ -16,6 +16,8 @@ import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
+import org.zerock.seoulive.board.course.mapper.commentMapper;
+import org.zerock.seoulive.board.course.mapper.courseViewMapper;
 import org.zerock.seoulive.board.course.persistence.CourseDAO;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
@@ -35,7 +37,7 @@ public class CourseServiceImpl
 
 	@Setter(onMethod_= {@Autowired})
 	private CourseDAO dao;		// 영속성 계층의 DAO 빈 주입받음
-	
+	@Setter(onMethod_= {@Autowired}) private courseViewMapper mapper;
 	
 	
 //	// 1. 게시판 목록을 얻어 반환해주는 기능 수행
@@ -62,7 +64,6 @@ public class CourseServiceImpl
 	@Override
 	public List<CourseTravelVO> getTravelList(CourseDTO dto) throws ServiceException {
 		log.trace("getTravelList() invoked.");
-		
 		return this.dao.selectTravelList(dto);
 	}
 	@Override
@@ -185,17 +186,17 @@ public class CourseServiceImpl
 //	} // modify	
 	
 
-//	
-//	@Override
-//	public boolean remove(Integer seq) throws ServiceException {
-//		log.trace("remove() invoked.");
-//		
-//		try {
-//			return mapper.delete(seq) ==1;
-//		} catch(Exception e){
-//			throw new ServiceException(e);
-//		} // try-catch
-//	} // remove
+
+	@Override
+	public boolean remove(Integer seq) throws ServiceException {
+		log.trace("remove() invoked.");
+
+		try {
+			return this.mapper.delete(seq) ==1;
+		} catch(Exception e){
+			throw new ServiceException(e);
+		} // try-catch
+	} // remove
 	
 	
 	

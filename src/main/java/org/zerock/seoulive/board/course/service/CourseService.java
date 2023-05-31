@@ -48,7 +48,7 @@ public interface CourseService {
 //		public abstract boolean modify(courseDTO course) throws ServiceException;
 
 //	// n. 특정 게시물 삭제 (DELETE)
-//	public abstract boolean remove(Integer seq) throws ServiceException;
+	public abstract boolean remove(Integer seq) throws ServiceException;
 	
 
 

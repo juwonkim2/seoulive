@@ -1,5 +1,6 @@
 package org.zerock.seoulive.board.course.persistence;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -29,6 +30,7 @@ public interface CourseDAO {
 			FROM TBL_COURSE_TRAVEL ct JOIN TBL_TRAVEL tt 
 				ON ct.TRAVEL_SEQ = tt.seq
 			WHERE BOARD_SEQ = ${seq}
+			ORDER BY travel_id
 			""")
 	public abstract List<CourseTravelVO> selectTravelList(CourseDTO dto);
 	@Select("""
@@ -36,6 +38,7 @@ public interface CourseDAO {
 			FROM TBL_COURSE_TRAVEL ct JOIN TBL_TRAVEL tt 
 				ON ct.TRAVEL_SEQ = tt.seq
 			WHERE BOARD_SEQ = ${seq}
+			ORDER BY travel_id
 			""")
 	public abstract List<CourseTravelVO> selectTravelList2(Integer seq);
 	
@@ -111,7 +114,10 @@ public interface CourseDAO {
 	
 	
 //	// n. 특정 게시물 삭제
-//	public Integer delete(Integer seq);
+//	@Delete("""
+//			delete from tbl_comment where seq = #{seq}
+//			""")
+//	public abstract Integer delete(Integer seq);
 //	
 //	// n. 특정 게시물 업데이트(갱신)
 //	public Integer update(courseDTO course);

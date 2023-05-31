@@ -6,7 +6,10 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.seoulive.board.course.domain.Criteria;
+import org.zerock.seoulive.board.course.domain.commDTO;
 import org.zerock.seoulive.board.course.domain.commVO;
+import org.zerock.seoulive.board.course.domain.memberVO;
+import org.zerock.seoulive.board.course.mapper.MemberMapper;
 import org.zerock.seoulive.board.course.mapper.commentMapper;
 
 import java.util.List;
@@ -18,25 +21,28 @@ public class commServiceImpl implements commService{
     @Setter(onMethod_ = @Autowired)
     private commentMapper mapper;
 
-    @Override
-    public List<commVO> list(Criteria cri, String board_name) throws Exception {
-        log.trace(" >>> list({}) invoked", board_name);
+    @Setter(onMethod_ = @Autowired) private MemberMapper memMapper;
 
-        return mapper.getListWithPaging(cri, board_name);
+
+    @Override
+    public List<commVO> list(Integer seq) throws Exception {
+        log.trace(" >>> list({}) invoked");
+
+        return this.mapper.commList(seq);
     }
 
     @Override
-    public Integer write(commVO vo) throws Exception {
+    public void write(commDTO dto) throws Exception {
         log.info("write() invoked");
 
-        return this.mapper.commRegit(vo);
+        this.mapper.commRegit(dto);
     }
 
     @Override
-    public Integer modify(commVO vo) throws Exception {
+    public Integer modify(commDTO dto) throws Exception {
         log.info("modify() invoked");
 
-        return this.mapper.commUpdate(vo);
+        return this.mapper.commUpdate(dto);
     }
 
     @Override
@@ -46,8 +52,12 @@ public class commServiceImpl implements commService{
         return this.mapper.commDelete(seq);
     }
 
-    @Override
-    public int getTotal(int seq) {
-        return mapper.commTotal(seq);
-    }
+
+
+//    @Override
+//    public List<memberVO> getUserpic(String profile_img) {
+//
+//        return this.memMapper.getUserPic(profile_img);
+//    }
+
 }
