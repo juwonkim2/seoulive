@@ -1,5 +1,6 @@
 package org.zerock.seoulive.mypage.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
@@ -30,7 +31,7 @@ public interface MyPageBoardMapper {
                             AND
                             m.email = #{email}
 				""")
-		public abstract List<ReviewBoardVO> selectLikeReviewList(String email,Criteria cri);
+		public abstract List<ReviewBoardVO> selectLikeReviewList(@Param("email") String email, @Param("cri") Criteria cri);
 
 		
 		public abstract ReviewBoardVO selectReview(Integer seq);
@@ -54,7 +55,7 @@ public interface MyPageBoardMapper {
 				""")
 		public abstract List<UserLikeVO> selectUserLikeList(String email); 
 		
-		public abstract List<tbl_likeVO> selectLikeList(String email,Criteria cri);
+		public abstract List<tbl_likeVO> selectLikeList(@Param("email") String email, @Param("cri") Criteria cri);
 		
 		// 마이페이지 나의 리뷰 게시물 페이징 처리를 위한 총 게시물 개수를 반환
 		@Select("""

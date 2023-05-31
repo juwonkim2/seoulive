@@ -101,7 +101,8 @@
                         <div class="gridView-menu">
                             <i class="fa fa-ellipsis-v"></i>
                         </div>
-                        <div class="gridView-image" style="background-image:url('https://mblogthumb-phinf.pstatic.net/MjAxNzA4MjdfMjgy/MDAxNTAzODAyNzIzNTM4.fp7hUPYdqiPc3GHMaB3-NYOpIK6ZLLC03ZKn0w03da4g.DFgtEvRePLPBvXbdQJt8XVjq6kJEXbJQ1uwUXCveoyog.JPEG.kotfa198643/lotte-world-tower-1791802_1920.jpg?type=w800');"></div>
+<%--                        <div class="gridView-image" style="background-image:url('https://mblogthumb-phinf.pstatic.net/MjAxNzA4MjdfMjgy/MDAxNTAzODAyNzIzNTM4.fp7hUPYdqiPc3GHMaB3-NYOpIK6ZLLC03ZKn0w03da4g.DFgtEvRePLPBvXbdQJt8XVjq6kJEXbJQ1uwUXCveoyog.JPEG.kotfa198643/lotte-world-tower-1791802_1920.jpg?type=w800');"></div>--%>
+                        <div class="gridView-image" ><img src="${pageContext.request.contextPath}/resources/static/img/nammt.jpg"  ></div>
                     </div>
                     <div class="gridView-detailsSection">
                         <div class="gridView-detailsTop">
@@ -199,10 +200,11 @@
 
                 </ul>
             </div>
+            <div class="btn_wrap">
+                <button class="write_btn"><a href="#">글쓰기</a></button>
+            </div>
         </div>
-        <div class="btn_wrap">
-            <button class="write_btn"><a href="#">글쓰기</a></button>
-        </div>
+
     </div>
     <jsp:include page="../../layout/footer.jsp"/>
 </body>

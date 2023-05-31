@@ -62,7 +62,7 @@ response.sendRedirect("../main/index.jsp"); %>
         }); // .onclick
 
         $('#myPageBtn').on('click', function () {
-            self.location.href = 'mypage/mypage';
+            self.location.href = '/mypage/mypage?email=${__AUTH__.email}';
         }); // .onclick
 
         $('#travelBoard').on('click', function () {

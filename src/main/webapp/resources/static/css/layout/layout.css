@@ -133,4 +133,8 @@ footer .footer_box ul li a{
 footer .footer_box .copyright{
     padding-top:10px;
 }
+.aBtn {
+    cursor: pointer;
+}
+
 

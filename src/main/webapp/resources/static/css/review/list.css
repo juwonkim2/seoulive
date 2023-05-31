@@ -64,7 +64,9 @@ ul.tab li.on a { color: #ededed; }
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700'); body { font-family: 'Roboto', sans-serif; background: #fff; margin: 0px,100px,100px,100px; padding: 1rem; }
 
 .gridViewContainer { display: flex; flex-wrap: wrap; /* margin-right: -1rem; */
-    margin-top: 50px; margin-right: 5%; margin-left: 15%; /* */ }
+    margin-top: 50px; margin-right: 5%;
+    /*margin-left: 15%; */
+    /* */ }
 
 .gridView-listItem { display: flex; align-self: stretch; flex-direction: column; width: 100%; }
 
@@ -78,17 +80,22 @@ ul.tab li.on a { color: #ededed; }
 .gridView-imageSection { position: relative; overflow: hidden; border-radius: 4px 4px 0 0; }
 
 /* Enforce the aspect ratio with padding trick */
-.gridView-imageSection:after { content: ' '; display: block; /* 16:9 */
-    padding-bottom: 56.25%; }
+.gridView-imageSection:after { content: ' '; display: block; /* 16:9 */}
 
-.gridView-imageSection .gridView-image { position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: #f5f5f5; background-size: cover; background-repeat: no-repeat; background-position: center; }
+.gridView-imageSection .gridView-image {}
+.gridView-imageSection .gridView-image img{
+    /*position: absolute; */
+    top: 0; bottom: 0; left: 0; right: 0;
+    width: 250px; height: 140px;
+    background-color: #f5f5f5; background-size: cover; background-repeat: no-repeat; background-position: center;
+}
 
 .gridView-duration { position: absolute; bottom: .5rem; left: .5rem; background: rgba(0, 0, 0, 0.6); color: #fff; font-weight: bold; padding: .2rem .4rem; font-size: 0.8rem; border-radius: 3px; }
 
 .gridView-detailsSection { padding: .5rem .6rem; display: flex; flex-direction: column; flex-grow: 1; word-break: break-word; }
 
 .gridView-detailsBottom { display: flex; align-items: center; margin-top: .5rem; color: #777; line-height: 1; }
-
+.gridView-image img{}
 .gridView-title { overflow: hidden; position: relative; color: #444; font-size: 1.2rem; line-height: 1.2em; font-weight: bold; display: block; /* Using webkit only multi line ellisis trick */
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; /* lines to show: 3 - fallback for no webkit will just cut text */
     max-height: calc(1.2em * 3); }
@@ -212,14 +219,18 @@ being apllied to the gragient for a smoother result */
 .file_form input[type='file'] { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 10; width: 100%; opacity: 0; }
 
 /* 페이징 */
-.paging_wrap{display: block; margin: 0 auto; padding-bottom: 20px;}
+.paging_wrap{ width: 100%;display: inline-block;}
+.paging_wrap .paging_box{display: block; margin: 0 auto; padding-bottom: 20px;}
 .paging_wrap .paging_box ul {padding:50px 0 0;text-align: center;}
 .paging_wrap .paging_box ul li {display: inline-block;vertical-align: middle;}
 .paging_wrap .paging_box ul li a {display: block;position: relative;font-weight: 300;font-size: 16px;color: #7b7b7b;box-sizing: border-box;}
 .paging_wrap .paging_box ul li:not(.pager) a {padding: 8px 0 9px;min-width: 33px;}
 .paging_wrap .paging_box ul li a.active {padding: 9px 0 10px;border: none;background-color: #49539E;color: #fff;}
 
-
+.btn_wrap{
+    display: inline-block;
+    float: right;
+    margin-bottom: 20px;}
 
 
 

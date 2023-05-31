@@ -13,10 +13,10 @@
     <div class="quick_box">
         <p>QUICK LINK</p>
         <ul>
-            <li><a href="#a">날씨</a></li>
-            <li><a href="#a">문의</a></li>
-            <li class="top" onClick="javascript:window.scrollTo(0,0)"><i class="fas fa-caret-up"></i></li>
-            <li class="bottom" onClick="javascript:window.scrollTo(0, document.body.scrollHeight)"><i class="fas fa-caret-down"></i></li>
+            <li class="aBtn">날씨</li>
+            <li class="faqBtn aBtn">FAQ</li>
+            <li class="top aBtn" onClick="javascript:window.scrollTo(0,0)"><i class="fas fa-caret-up"></i></li>
+            <li class="bottom aBtn" onClick="javascript:window.scrollTo(0, document.body.scrollHeight)"><i class="fas fa-caret-down"></i></li>
         </ul>
     </div>
 
@@ -41,4 +41,11 @@
         </div>
     </div>
 </footer>
+<script>
+    $(function () {
+        $('.faqBtn').on('click', function () {
+            self.location.href = '/board/cs/faq/list';
+        }); // .onclick
+    }); // jq
+</script>
 <!-- 푸터 끝 -->

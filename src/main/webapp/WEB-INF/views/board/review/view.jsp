@@ -132,7 +132,7 @@
             <!-- slides -->
             <div class="swiper-slide"><img src="../../../../resources/static/img/경복궁2.jpg" onclick="window.open(this.src)"
                                            style="height: 100%; width: 100%;"></div>
-            <div class="swiper-slide"><img src="../../../../resources/static/img/남산1.jpg" onclick="window.open(this.src)"
+            <div class="swiper-slide"><img src="../../../../resources/static/img/nammt.jpg" onclick="window.open(this.src)"
                                            style="height: 100%; width: 100%;"></div>
             <div class="swiper-slide"><img src="../../../../resources/static/img/명동1.jpg" onclick="window.open(this.src)"
                                            style="height: 100%; width: 100%;"></div>
