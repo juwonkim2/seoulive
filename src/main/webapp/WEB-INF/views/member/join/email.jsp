@@ -141,8 +141,7 @@
           const $resultMsg = $('#emailError');
 
           if (inputCode === code) {
-            $resultMsg.html('인증번호가 일치합니다.');
-            $resultMsg.css('color', 'green');
+            $resultMsg.html('인증번호가 일치합니다.').css('color','#3f8ef7');
             $('#mail_check_btn').attr('disabled', true);
             $('#email').attr('readonly', true);
           } else {
