@@ -99,93 +99,93 @@ $("#nickname").blur(function() {
 });
 
 // 회원가입 유효성 검사
-// $(function () {
-//     let pwCheck = /^[A-Za-z0-9\d@$!%*?&]{8,20}$/;
-//     let birthCheck = /^(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
-//
-//     function checkForm() {
-//
-//         // 비밀번호
-//         $("#password").blur(function(){
-//             if($("#password").val() == "" ){
-//                 $("#pwError").text("비밀번호를 입력해주세요");
-//                 $("#password").focus();
-//                 return false;
-//             }else if(!pwCheck.test($("#password").val())) {
-//                 $("#pwError").text("8자 이상 20자 이하로 입력해주세요").css("color", "red");
-//                 $("#password").focus();
-//                 return false;
-//             }else if(pwCheck.test($("#password").val())) {
-//                 $("#pwError").text("사용가능한 비밀번호 입니다.").css("color", "#3f8ef7");
-//                 return true;
-//             }
-//         });
-//
-//         // 비밀번호 서로확인
-//         $("#password_check").blur(function(){
-//             if($("#password").val() != $("#password_check").val()){
-//                 $("#pwError").text("비밀번호가 일치하지 않습니다").css('color', 'red');
-//                 $("#password_check").focus();
-//                 return false;
-//             }else if ($("#password").val() == $("#password_check").val()){
-//                 $("#pwError").text("");
-//                 return true;
-//             }
-//         });
-//
-//         // 생년월일
-//         $('#birthDate').blur(function() {
-//             if (birthCheck.test($(this).val())) {
-//                 console.log(birthCheck.test($(this).val()));
-//                 $('#birthError').text('');
-//             } else {
-//                 $('#birthError').text('생년월일을 8자로 입력해주세요').css('color', 'red');
-//             }
-//         });
-//         $("#birthDate").blur(function(){
-//             if($("#birthDate").val() == "" ){
-//                 $("#birthError").text("생년월일을 입력해주세요.").css('color', 'red');
-//                 $("#birthDate").focus();
-//                 return false;
-//             }else if(!birthCheck.test($("#birthDate").val())) {
-//                 $("#birthError").text("생년월일을 8자로 입력해주세요").css('color', 'red');
-//                 $("#birthDate").focus();
-//                 return false;
-//             }else if(birthCheck.test($("#birthDate").val())) {
-//                 $("#birthError").text("");
-//                 return true;
-//             }
-//         });
-//
-//     }
-//     checkForm();
-//
-//     // button 클릭시
-//
-//     $('#join_btn').click(function(){
-//         let terms = document.getElementById('terms');
-//
-//         if($("#password").val() == "" || $("#birthDate").val() == ""){
-//             alert("공백을 입력하세요");
-//             return false;
-//         }else if($("#mail_check_input").val() == ""){
-//             $('#emailError').text('이메일 인증을 완료해주세요').css('color', 'red');
-//             return false;
-//         }else if($("#gender").val() == "") {
-//             $('#genderError').text('성별을 선택해주세요').css('color', 'red');
-//             return false;
-//         }else if($("#password").val() != $("#password_check").val()){
-//             alert("비밀번호가 일치하지 않습니다");
-//             return false;
-//         }else if($('#terms').is(':checked') === false) {
-//             $('#termsError').text('약관에 동의해주세요').css('color', 'red');
-//             return false;
-//         }else if(!pwCheck.test($("#password").val()) || !birthCheck.test($("#birthDate").val())) {
-//             alert("형식에 맞춰 작성해주세요.")
-//             return false;
-//         }else {
-//             alert("서울라이브의 가족이 되신걸 환영합니다!");
-//             return true;
-//         }
-//     });
-// });
+$(function () {
+    let pwCheck = /^[A-Za-z0-9\d@$!%*?&]{8,20}$/;
+    let birthCheck = /^(19|20)[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+
+    function checkForm() {
+
+        // 비밀번호
+        $("#password").blur(function(){
+            if($("#password").val() == "" ){
+                $("#pwError").text("비밀번호를 입력해주세요");
+                $("#password").focus();
+                return false;
+            }else if(!pwCheck.test($("#password").val())) {
+                $("#pwError").text("8자 이상 20자 이하로 입력해주세요").css("color", "red");
+                $("#password").focus();
+                return false;
+            }else if(pwCheck.test($("#password").val())) {
+                $("#pwError").text("사용가능한 비밀번호 입니다.").css("color", "#3f8ef7");
+                return true;
+            }
+        });
+
+        // 비밀번호 서로확인
+        $("#password_check").blur(function(){
+            if($("#password").val() != $("#password_check").val()){
+                $("#pwError").text("비밀번호가 일치하지 않습니다").css('color', 'red');
+                $("#password_check").focus();
+                return false;
+            }else if ($("#password").val() == $("#password_check").val()){
+                $("#pwError").text("");
+                return true;
+            }
+        });
+
+        // 생년월일
+        $('#birthDate').blur(function() {
+            if (birthCheck.test($(this).val())) {
+                console.log(birthCheck.test($(this).val()));
+                $('#birthError').text('');
+            } else {
+                $('#birthError').text('생년월일을 8자로 입력해주세요').css('color', 'red');
+            }
+        });
+        $("#birthDate").blur(function(){
+            if($("#birthDate").val() == "" ){
+                $("#birthError").text("생년월일을 입력해주세요.").css('color', 'red');
+                $("#birthDate").focus();
+                return false;
+            }else if(!birthCheck.test($("#birthDate").val())) {
+                $("#birthError").text("생년월일을 8자로 입력해주세요").css('color', 'red');
+                $("#birthDate").focus();
+                return false;
+            }else if(birthCheck.test($("#birthDate").val())) {
+                $("#birthError").text("");
+                return true;
+            }
+        });
+
+    }
+    checkForm();
+
+    // button 클릭시
+
+    $('#join_btn').click(function(){
+        let terms = document.getElementById('terms');
+
+        if($("#password").val() == "" || $("#birthDate").val() == ""){
+            alert("공백을 입력하세요");
+            return false;
+        }else if($("#mail_check_input").val() == ""){
+            $('#emailError').text('이메일 인증을 완료해주세요').css('color', 'red');
+            return false;
+        }else if($("#gender").val() == "") {
+            $('#genderError').text('성별을 선택해주세요').css('color', 'red');
+            return false;
+        }else if($("#password").val() != $("#password_check").val()){
+            alert("비밀번호가 일치하지 않습니다");
+            return false;
+        }else if($('#terms').is(':checked') === false) {
+            $('#termsError').text('약관에 동의해주세요').css('color', 'red');
+            return false;
+        }else if(!pwCheck.test($("#password").val()) || !birthCheck.test($("#birthDate").val())) {
+            alert("형식에 맞춰 작성해주세요.")
+            return false;
+        }else {
+            alert("서울라이브의 가족이 되신걸 환영합니다!");
+            return true;
+        }
+    });
+});
