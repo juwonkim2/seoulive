@@ -16,6 +16,7 @@
     <%--    <script src="../js/list.js" defer></script>--%>
     <!-- tab -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
 
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
     <link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
@@ -79,7 +80,7 @@
                 <input type="text" class="searchTerm" placeholder="검색내용을 입력하세요." name="keyword">
 
                 <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
+                    <i class="fab fa-searchengin"></i>
                 </button>
             </div>
         </div>

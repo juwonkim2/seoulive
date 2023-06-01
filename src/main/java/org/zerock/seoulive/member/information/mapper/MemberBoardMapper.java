@@ -96,7 +96,7 @@ public interface MemberBoardMapper {
 //	public abstract String insertProfileImg(tbl_memberDTO dto);
 	//			 update 수정 
 	public abstract void updateProfileImg(String email,String profile_img);
-	
-	
+
+	public abstract void withdrawal(tbl_memberVO vo);
 	
 }	// end interface

@@ -36,4 +36,11 @@
 	    	m.email = l.email
 
 	</select>
+
+	<delete id="withdrawal">
+		delete from tbl_member
+		where email = ${email} and password = ${password}
+	</delete>
+
+
 </mapper>

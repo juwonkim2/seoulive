@@ -2,19 +2,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <% session.removeAttribute("member_mid");
-
 response.sendRedirect("../main/index.jsp"); %>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
-<script src="https://kit.fontawesome.com/4b84ea08f3.js" crossorigin="anonymous"></script>
 <script>console.log("<%= session.getAttribute("__AUTH__") %>");</script>
 
 <!-- 헤더 시작 -->
 <div id="header">
     <div class="wrap">
         <h1 class="logo">
-            <a href="#"><img src="${pageContext.request.contextPath}/resources/static/img/img-logo.png" width="240" height="60"></a>
+            <img id="headerLogo" src="${pageContext.request.contextPath}/resources/static/img/img-logo.png" width="240" height="60">
         </h1>
         <ul class="bn">
             <li class="fl" id="travelBoard">여행지</li>
@@ -48,6 +44,9 @@ response.sendRedirect("../main/index.jsp"); %>
     } // if
 
     $(function () {
+        $('.logo').on('click', function () {
+            self.location.href = '/';
+        }); // .onclick
 
         $('#loginBtn').on('click', function () {
             self.location.href = '/member/login/main';

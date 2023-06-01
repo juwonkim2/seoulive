@@ -151,7 +151,7 @@
 
     <div class="viewBtn">
         <ul class="btnList">
-            <li><a class="deleteBtn" href="#">삭제</a></li>
+<%--            <li><a class="deleteBtn" href="#">삭제</a></li>--%>
             <li><a class="modifyBtn" href="#">수정</a></li>
             <li><a class="listBtn" href="#">목록</a></li>
         </ul>

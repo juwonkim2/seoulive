@@ -53,7 +53,6 @@
 
 
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.free.persistence" />
-	<mybatis-spring:scan base-package="org.zerock.seoulive.board.course.persistence" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.course.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.review.mapper" />
 	<mybatis-spring:scan base-package="org.zerock.seoulive.board.travel.mapper" />

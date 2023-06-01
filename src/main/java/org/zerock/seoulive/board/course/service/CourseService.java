@@ -47,12 +47,6 @@ public interface CourseService {
 	// 9. 특정 게시물 상세조회 (READ)
 	public abstract CourseVO get(Integer seq) throws ServiceException;
 	public abstract void total(Integer seq) throws ServiceException;
-	
-	// 10. 상세조회 시 댓글 가져오기
-	public abstract List<CourseCommVO> commList(Integer seq) throws ServiceException;
-	
-	// 11. 댓글 작성하기
-	public abstract void commRegister(String content, Integer seq) throws ServiceException;
 	 
 //	// n. 특정 게시물 업데이트 (UPDATE)
 //		public abstract boolean modify(courseDTO course) throws ServiceException;

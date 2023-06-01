@@ -8,6 +8,5 @@ import lombok.Data;
 public class UserLikeDTO {
 	private Integer seq;
 	private String title;
-	private String board;
-	private Date write_Date;
+
 }	// end class

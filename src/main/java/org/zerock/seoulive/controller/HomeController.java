@@ -1,7 +1,5 @@
 package org.zerock.seoulive.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +9,13 @@ import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
 import org.zerock.seoulive.board.course.service.CourseService;
 import org.zerock.seoulive.board.free.service.FreeService;
-import org.zerock.seoulive.board.review.domain.Criteria;
 import org.zerock.seoulive.board.review.domain.ReviewBoardVO;
 import org.zerock.seoulive.board.review.service.ReviewBoardService;
-import org.zerock.seoulive.board.travel.domain.TravelBoardVO;
-import org.zerock.seoulive.board.travel.service.TravelBoardService;
+import org.zerock.seoulive.board.travel.domain.VO;
+import org.zerock.seoulive.board.travel.service.Service;
 import org.zerock.seoulive.exception.ControllerException;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Handles requests for the application home page.
@@ -34,7 +28,7 @@ public class HomeController {
 	@Autowired CourseService courseService;
 	@Autowired FreeService freeService;
 	@Autowired ReviewBoardService reviewService;
-	@Autowired TravelBoardService travelService;
+	@Autowired Service travelService;
 
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -50,7 +44,7 @@ public class HomeController {
 			model.addAttribute("__REVIEW_LIST__", reviewList);
 
 			org.zerock.seoulive.board.travel.domain.Criteria cri_travel = new org.zerock.seoulive.board.travel.domain.Criteria();
-			List<TravelBoardVO> travelList = this.travelService.getList(cri_travel);
+			List<VO> travelList = this.travelService.getList(cri_travel);
 			model.addAttribute("__TRAVEL_LIST__",travelList);
 
 		} catch (Exception e) {

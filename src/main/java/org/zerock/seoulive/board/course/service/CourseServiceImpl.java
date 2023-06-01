@@ -7,7 +7,6 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zerock.seoulive.board.course.domain.CourseCommVO;
 import org.zerock.seoulive.board.course.domain.CourseDTO;
 import org.zerock.seoulive.board.course.domain.CourseLikeDTO;
 import org.zerock.seoulive.board.course.domain.CoursePageTO;
@@ -16,7 +15,7 @@ import org.zerock.seoulive.board.course.domain.CourseVO;
 import org.zerock.seoulive.board.course.domain.CourseWriteDTO;
 import org.zerock.seoulive.board.course.domain.CourseWriteVO;
 import org.zerock.seoulive.board.course.exception.ServiceException;
-import org.zerock.seoulive.board.course.persistence.CourseDAO;
+import org.zerock.seoulive.board.course.mapper.CourseMapper;
 import org.zerock.seoulive.board.travel.domain.TravelDTO;
 
 import lombok.NoArgsConstructor;
@@ -34,7 +33,7 @@ public class CourseServiceImpl
 		DisposableBean {
 
 	@Setter(onMethod_= {@Autowired})
-	private CourseDAO dao;		// 영속성 계층의 DAO 빈 주입받음
+	private CourseMapper dao;		// 영속성 계층의 DAO 빈 주입받음
 	
 
 
@@ -155,30 +154,6 @@ public class CourseServiceImpl
 		} // try-catch
 	} // total
 	
-	
-	// 10. 댓글 리스트
-	@Override
-	public List<CourseCommVO> commList(Integer seq) throws ServiceException {
-		log.trace("commList() invoked");
-		
-        try {
-        	return this.dao.commList(seq);
-        } catch(Exception e){
-			throw new ServiceException(e);
-		} // try-catch
-	} // commList
-	
-	// 11. 댓글 작성
-	@Override
-	public void commRegister(String content, Integer seq) throws ServiceException {
-	log.trace("commRegister() invoked");
-		
-        try {
-        	this.dao.commRegister(content, seq);
-        } catch(Exception e){
-			throw new ServiceException(e);
-		} // try-catch
-	} // commRegister
 
 //	@Override
 //	public boolean modify(courseDTO course) throws ServiceException {

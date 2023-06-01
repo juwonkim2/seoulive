@@ -24,158 +24,170 @@ import java.util.List;
 
 @Service("MyPageBoardService")
 public class MyPageBoardServiceImpl 
-	implements 
-		MyPageBoardService,
-		InitializingBean,
-		DisposableBean{
-	
-	@Setter(onMethod_= {@Autowired})
-	private MyPageBoardMapper mapper;
+   implements 
+      MyPageBoardService,
+      InitializingBean,
+      DisposableBean{
+   
+   @Setter(onMethod_= {@Autowired})
+   private MyPageBoardMapper mapper;
 
-	@Override
-	public List<ReviewBoardVO> getMyReviewList(String email, Criteria cri) throws ServiceException {
-		
-		log.trace("getLikeReviewList({}) invoked.",cri);
-		
-		try {
-			return this.mapper.selectLikeReviewList(email,cri);
-		}catch(Exception e){
-			throw new ServiceException(e);
-		}	// end try-catch
-		
-		
-	}	// end getLikeReviewList
+   @Override
+   public List<ReviewBoardVO> getMyReviewList(String email) throws ServiceException {
+      
+      log.trace("getLikeReviewList({}) invoked.");
+      
+      try {
+         return this.mapper.selectReviewList(email);
+      }catch(Exception e){
+         throw new ServiceException(e);
+      }   // end try-catch
+      
+      
+   }   // end getLikeReviewList
 
-	@Override
-	public ReviewBoardVO getMyReview(Integer seq) throws ServiceException {
-		log.trace("getLikeReview({}) invoked.",seq);
-		
-		try {
-			return this.mapper.selectReview(seq);
-		}catch(Exception e) {
-			throw new ServiceException(e);
-		}	// end try-catch
-		
-	}	// end getLikeReview
+   @Override
+   public ReviewBoardVO getMyReview(Integer seq) throws ServiceException {
+      log.trace("getLikeReview({}) invoked.",seq);
+      
+      try {
+         return this.mapper.selectReview(seq);
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }   // end try-catch
+      
+   }   // end getLikeReview
 
-	@Override
-	public List<tbl_likeVO> getMyLikeList(String email, Criteria cri) throws ServiceException {
-		
-		log.trace("\t getMyLikeList ({},{}) invoked.",email,cri);
-		
-		try {
-			List<tbl_likeVO> list =  this.mapper.selectLikeList(email, cri);
-			list.forEach(log::info);
-			return	list;
-		}catch(Exception e) {
-			throw new ServiceException(e);
-		}	// end try-catch
-	}	// getMyLikeList
+   @Override
+   public List<UserLikeVO> getMyLikeReview(String email) throws ServiceException {
+      log.trace("\t getMyLikeList ({},{}) invoked.",email);
 
-	@Override
-	public tbl_likeVO getMyLike(Integer seq) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public List<UserLikeVO> getMyLikeList2(String email) throws ServiceException{
-		
-		log.trace("\t getMYListList2() invoked.");
-		try {
-			List<UserLikeVO> list = this.mapper.selectUserLikeList(email);
-			return list;
-		}catch(Exception e) {
-			throw new ServiceException(e);
-		}
-		
-	}	// end getMyLikeList2
-	
-	@Override
-	public List<TravelBoardVO> getMyTravelList(String email) throws ServiceException {
-			log.trace("getMyTravelList ({}) invoked.",email);
-		
-		try {
-			List<TravelBoardVO> list = this.mapper.getMyTravelList(email);	
-			return list;
-		}catch(Exception e) {
-			throw new ServiceException(e);
-		}
-	}	// getMyTravelList
-	
-	@Override
-	public TravelBoardVO getMyTravelBoard(Integer seq) throws ServiceException{
-			log.trace("getMyTravelList ({}) invoked.",seq);
-		
-		try {
-			TravelBoardVO result = this.mapper.getMyTravelBoard(seq);	
-			return result;
-		}catch(Exception e) {
-			throw new ServiceException(e);
-		}
-	}
-	
+      try {
+         List<UserLikeVO> list =  this.mapper.selectLikeReview(email);
 
-	@Override
-	public List<CourseVO> getMyCourseList(String email) throws ServiceException {
-		log.trace("getMyCourseList ({}) invoked.",email);
-		
-		try {
-			List<CourseVO> list = this.mapper.getMyCourseList(email);	
-			return list;
-		}catch(Exception e) {
-			throw new ServiceException(e);
-		}
-		
-		
-	}
+         return   list;
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }   // end try-catch
+   }
+   @Override
+   public List<UserLikeVO> getMyLikeCourse(String email) throws ServiceException {
+      log.trace("\t getMyLikeList ({},{}) invoked.",email);
 
-	@Override
-	public CourseVO getMyCourse(Integer seq) throws ServiceException {
-		log.trace("getMyCourse ({}) invoked.",seq);
-		try {
-			CourseVO result = this.mapper.getMyCourse(seq);	
-			return result;
-		}catch(Exception e) {
-			throw new ServiceException(e);
-		}
-	}
+      try {
+         List<UserLikeVO> list =  this.mapper.selectLikeCourse(email);
 
-	@Override
-	public List<tbl_followerVO> getFollowerList(Criteria cri) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+         return   list;
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }   // end try-catch
+   }
+   @Override
+   public List<UserLikeVO> getMyLikeTravel(String email) throws ServiceException {
+      log.trace("\t getMyLikeList ({},{}) invoked.",email);
 
-//	@Override
-//	public Integer getMyPageReviewTotal(String email) throws ServiceException {
-//		
-//		log.trace("getTotal() invoked.");
-//		
-//		return this.mapper.getMyPageReviewTotal(email);
-//	}	
-	
+      try {
+         List<UserLikeVO> list =  this.mapper.selectLikeTravel(email);
 
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}	// afterPropertiesSet
-	
-	@Override
-	public void destroy() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+         return   list;
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }   // end try-catch
+   }
 
-	@Override
-	public Integer getMyPageReview(String email) throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	
-	
+   @Override
+   public tbl_likeVO getMyLike(Integer seq) throws ServiceException {
+      // TODO Auto-generated method stub
+      return null;
+   }
+   
+   @Override
+   public List<TravelBoardVO> getMyTravelList(String email) throws ServiceException {
+         log.trace("getMyTravelList ({}) invoked.",email);
+      
+      try {
+         List<TravelBoardVO> list = this.mapper.getMyTravelList(email);   
+         return list;
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }
+   }   // getMyTravelList
+   
+   @Override
+   public TravelBoardVO getMyTravelBoard(Integer seq) throws ServiceException{
+         log.trace("getMyTravelList ({}) invoked.",seq);
+      
+      try {
+         TravelBoardVO result = this.mapper.getMyTravelBoard(seq);   
+         return result;
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }
+   }
+   
 
-	
+   @Override
+   public List<CourseVO> getMyCourseList(String email) throws ServiceException {
+      log.trace("getMyCourseList ({}) invoked.",email);
+      
+      try {
+         List<CourseVO> list = this.mapper.getMyCourseList(email);   
+         return list;
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }
+      
+      
+   }
 
-}	// end class
+   @Override
+   public CourseVO getMyCourse(Integer seq) throws ServiceException {
+      log.trace("getMyCourse ({}) invoked.",seq);
+      try {
+         CourseVO result = this.mapper.getMyCourse(seq);   
+         return result;
+      }catch(Exception e) {
+         throw new ServiceException(e);
+      }
+   }
+
+   @Override
+   public List<tbl_followerVO> getFollowerList(Criteria cri) throws ServiceException {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+//   @Override
+//   public Integer getMyPageReviewTotal(String email) throws ServiceException {
+//      
+//      log.trace("getTotal() invoked.");
+//      
+//      return this.mapper.getMyPageReviewTotal(email);
+//   }   
+   
+
+   @Override
+   public void afterPropertiesSet() throws Exception {
+      // TODO Auto-generated method stub
+      
+   }   // afterPropertiesSet
+   
+   @Override
+   public void destroy() throws Exception {
+      // TODO Auto-generated method stub
+      
+   }
+
+   @Override
+   public Integer getMyPageReview(String email) throws ServiceException {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   
+   
+
+   
+
+}   // end class

@@ -18,16 +18,14 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/course/course_write.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/reset.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/layout.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/static/css/layout/footer.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.1/jquery-migrate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script src="https://kit.fontawesome.com/889f069cfd.js" crossorigin="anonymous"></script>
-
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
-<link rel="icon" href="${pageContext.request.contextPath}/resources/static/img/logo_ico.png" type="image/x-icon">
 
 <style>
         #map {
