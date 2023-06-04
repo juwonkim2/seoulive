@@ -1,32 +1,31 @@
 package org.zerock.seoulive.board.course.domain;
 
-import lombok.Value;
-
 import java.util.Date;
+
+import lombok.Value;
 
 @Value
 public class CourseVO {
-    private Integer seq;
-    private String WRITER;
-    private String TITLE;
-    private String REVIEW;
-    private Integer TOTAL;
-    private Date WRITE_DATE;
-    private Date MODIFY_DATE;
-    private Date DURATION_START;
-    private Date DURATION_END;
-    
-    public CourseDTO toDTO() {
-        CourseDTO dto = new CourseDTO();
-
-        dto.setSeq(seq);
-        dto.setWRITER(WRITER);
-        dto.setTITLE(TITLE);
-        dto.setREVIEW(REVIEW);
-        dto.setDURATION_START(DURATION_START);
-        dto.setDURATION_END(DURATION_END);
-
-        return dto;
-    }
-
-} // end class
+	private Integer seq;
+	private String writer;
+	private String title;
+	private String review;
+	private Integer total;
+	private Date writeDate;
+	private Date modifyDate;
+	private Date durationStart;
+	private Date DurationEnd;
+	
+	public CourseDTO toDTO() {
+		CourseDTO dto = new CourseDTO();
+		dto.setSeq(seq);
+		dto.setWriteDate(writeDate);
+		dto.setReview(review);
+		dto.setDurationStart(durationStart);
+		dto.setDurationEnd(DurationEnd);
+		
+		return dto;
+		
+	}	// end toDTO
+	
+}	// end class
